@@ -1,0 +1,33 @@
+/******************************************************************************
+File: MissionVision.module.css
+******************************************************************************/
+
+.wrapper {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 2rem;
+}
+
+.card {
+  padding: 2rem;
+
+  border-radius: var(--radius-md);
+
+  border: 1px solid var(--gray-200);
+
+  background: var(--white);
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+
+  color: var(--brand-700);
+}
+
+.card p {
+  color: var(--gray-600);
+
+  line-height: 1.8;
+}

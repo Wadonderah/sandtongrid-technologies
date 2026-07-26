@@ -1,0 +1,16 @@
+# ==============================================================================
+# robots.txt
+# ------------------------------------------------------------------------------
+# Purpose:
+# Controls how search engine crawlers access the website.
+#
+# Notes:
+# - Allow all major search engines.
+# - Reference the XML sitemap.
+# ==============================================================================
+
+User-agent: *
+
+Allow: /
+
+Sitemap: https://www.sandtongridtech.com/sitemap.xml

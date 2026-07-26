@@ -1,0 +1,55 @@
+/******************************************************************************
+Success Metrics
+******************************************************************************/
+
+.section {
+  background: var(--color-surface);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.metric {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.metric:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.value {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.label {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}

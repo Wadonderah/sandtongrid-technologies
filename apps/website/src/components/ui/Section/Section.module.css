@@ -1,0 +1,43 @@
+/******************************************************************************
+File: Section.module.css
+------------------------------------------------------------------------------
+Purpose:
+Reusable layout section.
+
+Responsibilities:
+- Provide consistent vertical spacing.
+- Never control content width.
+- Never control typography.
+******************************************************************************/
+
+/* =============================================================================
+   Base Section
+============================================================================= */
+
+.section {
+  position: relative;
+
+  width: 100%;
+
+  padding-block: var(--section-padding-y);
+}
+
+/* =============================================================================
+   Size Variants
+============================================================================= */
+
+.sm {
+  padding-block: var(--space-16);
+}
+
+.md {
+  padding-block: var(--space-20);
+}
+
+.lg {
+  padding-block: var(--space-24);
+}
+
+.xl {
+  padding-block: var(--space-32);
+}

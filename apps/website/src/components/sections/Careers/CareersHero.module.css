@@ -1,0 +1,40 @@
+/******************************************************************************
+Careers Hero
+******************************************************************************/
+
+.section {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  color: var(--color-on-primary);
+  padding: 6rem 0;
+}
+
+.content {
+  max-width: 760px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  max-width: 680px;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  opacity: 0.95;
+}

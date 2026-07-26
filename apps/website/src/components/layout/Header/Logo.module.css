@@ -1,0 +1,39 @@
+/******************************************************************************
+File: Logo.module.css
+------------------------------------------------------------------------------
+Purpose:
+Styles for the Header Logo component.
+******************************************************************************/
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--brand-600);
+  letter-spacing: -0.02em;
+}
+
+.company {
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gray-600);
+}

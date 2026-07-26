@@ -1,0 +1,43 @@
+/******************************************************************************
+Why Choose Us
+******************************************************************************/
+
+.section {
+  background: var(--color-background);
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  padding: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.description {
+  line-height: 1.8;
+}

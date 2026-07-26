@@ -1,0 +1,94 @@
+/******************************************************************************
+File: themes.css
+Purpose:
+Semantic design tokens.
+
+Rules:
+- Components MUST use these variables.
+- Never use raw colors inside components.
+******************************************************************************/
+
+/* ==========================================================================
+   Light Theme
+========================================================================== */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Brand */
+
+  --color-primary: var(--blue-600);
+  --color-primary-hover: var(--blue-700);
+
+  --color-secondary: var(--slate-700);
+
+  /* Text */
+
+  --color-heading: var(--slate-900);
+  --color-text: var(--slate-700);
+  --color-text-light: var(--slate-500);
+  --color-text-inverse: var(--white);
+
+  /* Backgrounds */
+
+  --color-background: var(--white);
+  --color-surface: var(--slate-50);
+  --color-surface-hover: var(--slate-100);
+
+  /* Borders */
+
+  --color-border: var(--slate-200);
+
+  /* States */
+
+  --color-success: var(--green-500);
+  --color-warning: var(--amber-500);
+  --color-danger: var(--red-500);
+
+  /* Focus */
+
+  --color-focus: var(--blue-400);
+}
+
+/* ==========================================================================
+   Dark Theme
+========================================================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Brand */
+
+  --color-primary: var(--blue-400);
+  --color-primary-hover: var(--blue-300);
+
+  --color-secondary: var(--slate-300);
+
+  /* Text */
+
+  --color-heading: var(--white);
+  --color-text: var(--slate-200);
+  --color-text-light: var(--slate-400);
+  --color-text-inverse: var(--slate-900);
+
+  /* Backgrounds */
+
+  --color-background: var(--slate-900);
+  --color-surface: var(--slate-800);
+  --color-surface-hover: var(--slate-700);
+
+  /* Borders */
+
+  --color-border: var(--slate-700);
+
+  /* States */
+
+  --color-success: var(--green-500);
+  --color-warning: var(--amber-500);
+  --color-danger: var(--red-500);
+
+  /* Focus */
+
+  --color-focus: var(--blue-300);
+}

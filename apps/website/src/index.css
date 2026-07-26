@@ -1,0 +1,56 @@
+/******************************************************************************
+ Global Stylesheet
+
+ Purpose:
+ - Reset browser defaults.
+ - Define application-wide styling.
+ - Provide a clean foundation for all pages.
+******************************************************************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #1f2937;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}

@@ -1,0 +1,45 @@
+/******************************************************************************
+File: AboutHero.module.css
+******************************************************************************/
+
+.hero {
+  background: linear-gradient(135deg, var(--brand-700), var(--brand-500));
+
+  color: var(--white);
+
+  text-align: center;
+
+  padding: 6rem 0;
+}
+
+.content {
+  max-width: 800px;
+
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-size: 1rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.1rem;
+
+  margin-bottom: 1rem;
+
+  opacity: 0.9;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.2rem;
+
+  line-height: 1.8;
+
+  opacity: 0.95;
+}

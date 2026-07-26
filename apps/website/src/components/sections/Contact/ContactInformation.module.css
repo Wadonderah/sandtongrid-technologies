@@ -1,0 +1,55 @@
+/******************************************************************************
+Contact Information
+******************************************************************************/
+
+.section {
+  background: var(--color-surface);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  padding: 2rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.value {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

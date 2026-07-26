@@ -1,0 +1,23 @@
+/******************************************************************************
+File: PageBanner.module.css
+******************************************************************************/
+
+.banner {
+  padding: 6rem 0;
+  background: var(--brand-600);
+  color: var(--white);
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.description {
+  opacity: 0.95;
+}

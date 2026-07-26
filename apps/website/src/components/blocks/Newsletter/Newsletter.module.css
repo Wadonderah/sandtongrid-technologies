@@ -1,0 +1,140 @@
+/******************************************************************************
+File: Newsletter.module.css
+------------------------------------------------------------------------------
+Purpose:
+Styles for the Newsletter block displayed on the Home page.
+
+Responsibilities:
+- Center newsletter content.
+- Improve readability.
+- Keep the email form visually balanced.
+- Ensure responsive behavior.
+- Maintain consistent spacing with the design system.
+******************************************************************************/
+
+/* ============================================================================
+   Newsletter Section
+   ---------------------------------------------------------------------------
+   Provides the outer spacing and background for the newsletter block.
+============================================================================ */
+
+.newsletter {
+  padding: 5rem 0;
+  background: var(--gray-50);
+}
+
+/* ============================================================================
+   Content Wrapper
+   ---------------------------------------------------------------------------
+   Centers all newsletter content and limits its maximum width for readability.
+============================================================================ */
+
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ============================================================================
+   Heading
+============================================================================ */
+
+.title {
+  margin-bottom: 1rem;
+}
+
+/* ============================================================================
+   Description
+   ---------------------------------------------------------------------------
+   Restrict paragraph width to improve readability while keeping it centered.
+============================================================================ */
+
+.description {
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+}
+
+/* ============================================================================
+   Newsletter Form
+   ---------------------------------------------------------------------------
+   Keep the email field and button centered as one visual group.
+============================================================================ */
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================================
+   Email Input
+   ---------------------------------------------------------------------------
+   Styled to match the site's modern UI while remaining accessible.
+============================================================================ */
+
+.input {
+  width: 340px;
+  max-width: 100%;
+
+  padding: 0.95rem 1rem;
+
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+
+  background: var(--white);
+
+  color: var(--gray-900);
+
+  font-size: 1rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* ============================================================================
+   Placeholder
+============================================================================ */
+
+.input::placeholder {
+  color: var(--gray-500);
+}
+
+/* ============================================================================
+   Focus State
+   ---------------------------------------------------------------------------
+   Improves accessibility by making the focused input easier to identify.
+============================================================================ */
+
+.input:focus {
+  outline: none;
+
+  border-color: var(--brand-600);
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ============================================================================
+   Mobile Layout
+   ---------------------------------------------------------------------------
+   Stack the input and button vertically on smaller screens.
+============================================================================ */
+
+@media (max-width: 768px) {
+  .form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .form button {
+    width: 100%;
+  }
+}

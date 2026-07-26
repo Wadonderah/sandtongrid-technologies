@@ -1,0 +1,53 @@
+/******************************************************************************
+Testimonials
+******************************************************************************/
+
+.section {
+  background: var(--color-background);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.quote {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.author {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.role {
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}

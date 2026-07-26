@@ -1,0 +1,42 @@
+/******************************************************************************
+Office Locations
+******************************************************************************/
+
+.section {
+  background: var(--color-surface);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.address {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.region {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}

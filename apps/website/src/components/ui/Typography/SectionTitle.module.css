@@ -1,0 +1,41 @@
+/******************************************************************************
+File: SectionTitle.module.css
+******************************************************************************/
+
+.wrapper {
+  margin-bottom: var(--space-xl);
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.title {
+  font-size: 2.5rem;
+
+  font-weight: 700;
+
+  color: var(--color-primary);
+
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  color: var(--color-text-light);
+
+  line-height: 1.8;
+
+  font-size: 1.05rem;
+}
+
+.left .subtitle {
+  margin-left: 0;
+}

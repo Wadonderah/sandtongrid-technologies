@@ -1,0 +1,23 @@
+.button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border: none;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  background: transparent;
+
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: rgba(0, 0, 0, 0.08);
+}

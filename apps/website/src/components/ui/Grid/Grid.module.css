@@ -1,0 +1,81 @@
+/******************************************************************************
+File: Grid.module.css
+------------------------------------------------------------------------------
+Purpose:
+Reusable responsive CSS Grid.
+
+Responsibilities:
+- Handle responsive columns.
+- Handle gaps.
+- Never control typography or spacing outside itself.
+******************************************************************************/
+
+/* =============================================================================
+   Base Grid
+============================================================================= */
+
+.grid {
+  display: grid;
+}
+
+/* =============================================================================
+   Columns
+============================================================================= */
+
+.cols1 {
+  grid-template-columns: 1fr;
+}
+
+.cols2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cols3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cols4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* =============================================================================
+   Gaps
+============================================================================= */
+
+.sm {
+  gap: var(--grid-gap-sm);
+}
+
+.md {
+  gap: var(--grid-gap-md);
+}
+
+.lg {
+  gap: var(--grid-gap-lg);
+}
+
+.xl {
+  gap: var(--grid-gap-xl);
+}
+
+/* =============================================================================
+   Responsive
+============================================================================= */
+
+@media (max-width: 1024px) {
+  .cols4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cols3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cols2,
+  .cols3,
+  .cols4 {
+    grid-template-columns: 1fr;
+  }
+}

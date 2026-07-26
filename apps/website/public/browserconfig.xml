@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+===============================================================================
+File: browserconfig.xml
+------------------------------------------------------------------------------
+Purpose:
+Microsoft Windows tile configuration.
+
+Notes:
+- Used by older versions of Microsoft Edge / Internet Explorer.
+- Safe to include even if modern browsers ignore it.
+===============================================================================
+-->
+
+<browserconfig>
+    <msapplication>
+
+        <tile>
+
+            <square150x150logo src="/android-chrome-192x192.png"/>
+
+            <TileColor>#0f172a</TileColor>
+
+        </tile>
+
+    </msapplication>
+</browserconfig>

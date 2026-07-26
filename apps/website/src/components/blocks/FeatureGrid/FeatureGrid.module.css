@@ -1,0 +1,42 @@
+/******************************************************************************
+File: FeatureGrid.module.css
+******************************************************************************/
+
+.section {
+  padding: 6rem 0;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  font-size: 1.25rem;
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--gray-600);
+  line-height: 1.7;
+}

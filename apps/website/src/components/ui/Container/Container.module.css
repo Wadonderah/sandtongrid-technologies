@@ -1,0 +1,58 @@
+/******************************************************************************
+File: Container.module.css
+------------------------------------------------------------------------------
+Purpose:
+Reusable layout container.
+
+Responsibilities:
+- Control the maximum content width.
+- Apply consistent horizontal padding.
+- Center content horizontally.
+- Never control vertical spacing.
+******************************************************************************/
+
+/* =============================================================================
+   Base Container
+============================================================================= */
+
+.container {
+  width: 100%;
+
+  margin-inline: auto;
+
+  padding-inline: var(--space-6);
+}
+
+/* =============================================================================
+   Width Variants
+============================================================================= */
+
+.sm {
+  max-width: var(--container-sm);
+}
+
+.md {
+  max-width: var(--container-md);
+}
+
+.lg {
+  max-width: var(--container-lg);
+}
+
+.xl {
+  max-width: var(--container-xl);
+}
+
+.twoXl {
+  max-width: var(--container-2xl);
+}
+
+/* =============================================================================
+   Responsive
+============================================================================= */
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}

@@ -1,0 +1,248 @@
+/******************************************************************************
+File: Header.module.css
+------------------------------------------------------------------------------
+Purpose:
+Shared header styles.
+
+Responsibilities:
+- Header layout
+- Navigation
+- Logo
+- Header actions
+- Responsive behavior
+******************************************************************************/
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  backdrop-filter: blur(18px);
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border-bottom: 1px solid var(--color-border);
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+
+  align-items: center;
+
+  gap: 3rem;
+
+  min-height: 82px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/******************************************************************************
+Logo
+******************************************************************************/
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1.1;
+}
+
+.logoPrimary {
+  color: var(--color-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.logoSecondary {
+  color: var(--color-text-light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+
+/******************************************************************************
+Navigation
+******************************************************************************/
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 2rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.35rem 0;
+
+  color: var(--color-text);
+
+  text-decoration: none;
+
+  font-weight: 500;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.link:hover {
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -0.35rem;
+
+  width: 100%;
+  height: 3px;
+
+  border-radius: 999px;
+
+  background: var(--color-primary);
+}
+
+/******************************************************************************
+Actions
+******************************************************************************/
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 1.25rem;
+}
+
+.actions > * {
+  flex-shrink: 0;
+}
+
+/******************************************************************************
+Primary Button
+******************************************************************************/
+
+.ctaButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.9rem 1.6rem;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-primary);
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.ctaButton:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/******************************************************************************
+Tablet
+******************************************************************************/
+
+@media (max-width: 1024px) {
+  .navigation {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .left,
+  .center,
+  .right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+/******************************************************************************
+Mobile
+******************************************************************************/
+
+@media (max-width: 768px) {
+  .logoPrimary {
+    font-size: 1.15rem;
+  }
+
+  .menu {
+    gap: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ctaButton {
+    width: auto;
+  }
+}
