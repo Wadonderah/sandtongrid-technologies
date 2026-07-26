@@ -8,6 +8,7 @@ Responsibilities:
 - Hero
 - Homepage CTA
 - Newsletter
+- FAQ
 ******************************************************************************/
 
 const homeData = {
@@ -60,6 +61,36 @@ const homeData = {
     placeholder: "Enter your email",
 
     button: "Subscribe",
+  },
+
+  faq: {
+    title: "Frequently Asked Questions",
+
+    items: [
+      {
+        question: "Which cloud platforms do you support?",
+        answer:
+          "We specialize in AWS and provide cloud architecture, migration, automation and managed services.",
+      },
+
+      {
+        question: "Do you offer DevOps consulting?",
+        answer:
+          "Yes. We implement CI/CD pipelines, Infrastructure as Code with Terraform, Docker and Kubernetes.",
+      },
+
+      {
+        question: "Can you migrate existing applications?",
+        answer:
+          "Yes. We assess, plan and execute secure migrations with minimal downtime.",
+      },
+
+      {
+        question: "Do you provide ongoing support?",
+        answer:
+          "Yes. We offer monitoring, maintenance, security updates and operational support.",
+      },
+    ],
   },
 };
 

@@ -11,21 +11,14 @@ Responsibilities:
 - Integrate with the shared Button component.
 ******************************************************************************/
 
-import { useContext } from "react";
-
 import Button from "@/components/ui/Button";
-import { ThemeContext } from "@/context/ThemeContext";
+
+import useTheme from "@/hooks/useTheme";
 
 import styles from "./ThemeToggle.module.css";
 
 const ThemeToggle = () => {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("ThemeToggle must be used within ThemeProvider.");
-  }
-
-  const { theme, toggleTheme } = context;
+  const { theme, setTheme } = useTheme();
 
   const resolvedTheme =
     theme === "system"
@@ -34,13 +27,17 @@ const ThemeToggle = () => {
         : "light"
       : theme;
 
+  const handleToggle = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
   return (
     <Button
       type="button"
       variant="ghost"
       aria-label="Toggle theme"
       aria-pressed={resolvedTheme === "dark"}
-      onClick={toggleTheme}
+      onClick={handleToggle}
       className={styles.button}
     >
       {resolvedTheme === "dark" ? "☀️" : "🌙"}
