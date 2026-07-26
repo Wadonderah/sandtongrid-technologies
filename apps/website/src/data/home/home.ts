@@ -6,9 +6,10 @@ Centralized content for the Home page.
 
 Responsibilities:
 - Hero
+- Feature Grid
+- FAQ
 - Homepage CTA
 - Newsletter
-- FAQ
 ******************************************************************************/
 
 const homeData = {
@@ -31,6 +32,74 @@ const homeData = {
 
       link: "/services",
     },
+  },
+
+  featureGrid: {
+    title: "What We Do",
+
+    items: [
+      {
+        title: "Cloud Architecture",
+
+        description:
+          "Design scalable, resilient AWS cloud platforms following the AWS Well-Architected Framework.",
+      },
+
+      {
+        title: "Cloud Migration",
+
+        description:
+          "Modernize existing workloads using secure migration strategies with minimal downtime.",
+      },
+
+      {
+        title: "DevOps Automation",
+
+        description:
+          "Automate infrastructure and deployments using Terraform, GitHub Actions and Kubernetes.",
+      },
+
+      {
+        title: "Managed Cloud",
+
+        description:
+          "Continuous monitoring, security hardening and operational support for production workloads.",
+      },
+    ],
+  },
+
+  faq: {
+    title: "Frequently Asked Questions",
+
+    items: [
+      {
+        question: "Which cloud platforms do you support?",
+
+        answer:
+          "We specialize in AWS and provide cloud architecture, migration, automation and managed services.",
+      },
+
+      {
+        question: "Do you offer DevOps consulting?",
+
+        answer:
+          "Yes. We implement CI/CD pipelines, Infrastructure as Code with Terraform, Docker and Kubernetes.",
+      },
+
+      {
+        question: "Can you migrate existing applications?",
+
+        answer:
+          "Yes. We assess, plan and execute secure migrations with minimal downtime.",
+      },
+
+      {
+        question: "Do you provide ongoing support?",
+
+        answer:
+          "Yes. We offer monitoring, maintenance, security updates and operational support.",
+      },
+    ],
   },
 
   cta: {
@@ -61,36 +130,6 @@ const homeData = {
     placeholder: "Enter your email",
 
     button: "Subscribe",
-  },
-
-  faq: {
-    title: "Frequently Asked Questions",
-
-    items: [
-      {
-        question: "Which cloud platforms do you support?",
-        answer:
-          "We specialize in AWS and provide cloud architecture, migration, automation and managed services.",
-      },
-
-      {
-        question: "Do you offer DevOps consulting?",
-        answer:
-          "Yes. We implement CI/CD pipelines, Infrastructure as Code with Terraform, Docker and Kubernetes.",
-      },
-
-      {
-        question: "Can you migrate existing applications?",
-        answer:
-          "Yes. We assess, plan and execute secure migrations with minimal downtime.",
-      },
-
-      {
-        question: "Do you provide ongoing support?",
-        answer:
-          "Yes. We offer monitoring, maintenance, security updates and operational support.",
-      },
-    ],
   },
 };
 
