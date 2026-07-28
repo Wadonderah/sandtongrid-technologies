@@ -24,100 +24,100 @@ import type { ButtonVariant } from "@/components/ui/Button";
  * CTA button configuration.
  */
 interface CTAButton {
-    label: string;
-    to: string;
-    variant: ButtonVariant;
+  label: string;
+  to: string;
+  variant: ButtonVariant;
 }
 
 /**
  * CTA section.
  */
 interface CTASection {
-    title: string;
-    description: string;
-    primaryButton: CTAButton;
-    secondaryButton: CTAButton;
+  title: string;
+  description: string;
+  primaryButton: CTAButton;
+  secondaryButton: CTAButton;
 }
 
 /**
  * Generic content card.
  */
 interface ContentCard {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 /**
  * Process step.
  */
 interface ProcessStep {
-    number: string;
-    title: string;
-    description: string;
+  number: string;
+  title: string;
+  description: string;
 }
 
 /**
  * Migration step.
  */
 interface MigrationStep {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 /**
  * Technology service card.
  */
 interface TechnologyService {
-    icon: string;
-    title: string;
-    description: string;
+  icon: string;
+  title: string;
+  description: string;
 }
 
 /**
  * Services page data model.
  */
 interface ServicesData {
-    hero: {
-        eyebrow: string;
-        title: string;
-        description: string;
-    };
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
 
-    cloudConsulting: {
-        eyebrow: string;
-        title: string;
-        description: string;
-        services: ContentCard[];
-    };
+  cloudConsulting: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    services: ContentCard[];
+  };
 
-    cloudMigration: {
-        eyebrow: string;
-        title: string;
-        description: string;
-        steps: MigrationStep[];
-    };
+  cloudMigration: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: MigrationStep[];
+  };
 
-    devOpsAutomation: {
-        title: string;
-        services: TechnologyService[];
-    };
+  devOpsAutomation: {
+    title: string;
+    services: TechnologyService[];
+  };
 
-    managedServices: {
-        title: string;
-        services: TechnologyService[];
-    };
+  managedServices: {
+    title: string;
+    services: TechnologyService[];
+  };
 
-    process: {
-        title: string;
-        steps: ProcessStep[];
-    };
+  process: {
+    title: string;
+    steps: ProcessStep[];
+  };
 
-    technologies: {
-        title: string;
-        items: string[];
-    };
+  technologies: {
+    title: string;
+    items: string[];
+  };
 
-    cta: CTASection;
+  cta: CTASection;
 }
 
 /* =============================================================================
@@ -126,10 +126,10 @@ interface ServicesData {
 
 const services: ServicesData = {
   /* =========================================================================
-       Hero Section
-       -------------------------------------------------------------------------
-       Top section of the Services page.
-    ========================================================================= */
+     Hero Section
+     -------------------------------------------------------------------------
+     Top section of the Services page.
+  ========================================================================= */
 
   hero: {
     eyebrow: "Our Services",
@@ -141,10 +141,10 @@ const services: ServicesData = {
   },
 
   /* =========================================================================
-       Cloud Consulting Section
-       -------------------------------------------------------------------------
-       Advisory and architecture services.
-    ========================================================================= */
+     Cloud Consulting Section
+     -------------------------------------------------------------------------
+     Advisory and architecture services.
+  ========================================================================= */
 
   cloudConsulting: {
     eyebrow: "Cloud Consulting",
@@ -179,10 +179,10 @@ const services: ServicesData = {
   },
 
   /* =========================================================================
-       Cloud Migration Section
-       -------------------------------------------------------------------------
-       Migration methodology and process.
-    ========================================================================= */
+     Cloud Migration Section
+     -------------------------------------------------------------------------
+     Migration methodology and process.
+  ========================================================================= */
 
   cloudMigration: {
     eyebrow: "Cloud Migration",
@@ -231,10 +231,10 @@ const services: ServicesData = {
   },
 
   /* =========================================================================
-       DevOps & Automation Section
-       -------------------------------------------------------------------------
-       DevOps engineering capabilities.
-    ========================================================================= */
+     DevOps & Automation Section
+     -------------------------------------------------------------------------
+     DevOps engineering capabilities.
+  ========================================================================= */
 
   devOpsAutomation: {
     title: "DevOps & Automation",
@@ -279,10 +279,10 @@ const services: ServicesData = {
   },
 
   /* =========================================================================
-       Managed Services Section
-       -------------------------------------------------------------------------
-       Ongoing support and cloud operations.
-    ========================================================================= */
+     Managed Services Section
+     -------------------------------------------------------------------------
+     Ongoing support and cloud operations.
+  ========================================================================= */
 
   managedServices: {
     title: "Managed Cloud Services",
@@ -326,59 +326,72 @@ const services: ServicesData = {
     ],
   },
 
-  /* =========================================================================
-       Delivery Process Section
-       -------------------------------------------------------------------------
-       Standard project delivery approach.
-    ========================================================================= */
+    /* =========================================================================
+     Delivery Process Section
+     -------------------------------------------------------------------------
+     Standard project delivery approach.
+  ========================================================================= */
 
   process: {
     title: "Our Delivery Process",
+
+    /* ---------------------------------------------------------------------
+       Delivery Workflow
+
+       Purpose:
+       Describe the typical engagement lifecycle followed by
+       Sandtongrid Technologies for cloud consulting,
+       migration and modernization projects.
+
+       This content is intentionally business-focused and
+       mirrors a real consulting engagement without copying
+       competitor wording.
+    --------------------------------------------------------------------- */
 
     steps: [
       {
         number: "01",
 
-        title: "Discovery",
+        title: "Discovery & Assessment",
 
         description:
-          "Understand business objectives, assess the current environment and identify technical requirements.",
+          "We begin by understanding your business objectives, reviewing your current environment, identifying technical constraints and evaluating opportunities for cloud adoption.",
       },
 
       {
         number: "02",
 
-        title: "Architecture & Planning",
+        title: "Solution Design",
 
         description:
-          "Design secure, scalable cloud architectures and define a clear implementation roadmap.",
+          "Our architects design a secure, scalable and cost-efficient solution tailored to your business, including architecture diagrams, migration plans and implementation roadmaps.",
       },
 
       {
         number: "03",
 
-        title: "Implementation",
+        title: "Implementation & Migration",
 
         description:
-          "Deploy infrastructure, automate workflows and integrate DevOps best practices using modern cloud technologies.",
+          "We deploy cloud infrastructure, automate provisioning, migrate workloads and validate every stage to minimize operational disruption and ensure a smooth transition.",
       },
 
       {
         number: "04",
 
-        title: "Optimization & Support",
+        title: "Operate & Continuous Improvement",
 
         description:
-          "Continuously monitor, optimize and support cloud environments to ensure reliability, security and performance.",
+          "After deployment, we continuously monitor performance, strengthen security, optimize cloud costs and provide ongoing operational support as your business evolves.",
       },
     ],
   },
 
   /* =========================================================================
-       Technologies Section
-       -------------------------------------------------------------------------
-       Technologies and platforms used by Sandtongrid Technologies.
-    ========================================================================= */
+     Technologies Section
+     -------------------------------------------------------------------------
+     Technologies and platforms used by Sandtongrid Technologies.
+  ========================================================================= */
 
   technologies: {
     title: "Technologies We Use",
@@ -411,29 +424,29 @@ const services: ServicesData = {
   },
 
   /* =========================================================================
-       Call To Action Section
-       -------------------------------------------------------------------------
-       Final conversion section encouraging visitors to contact the company or
-       explore previous client success stories.
-    ========================================================================= */
+     Call To Action Section
+     -------------------------------------------------------------------------
+     Final conversion section encouraging visitors to contact the company or
+     explore previous client success stories.
+  ========================================================================= */
 
   cta: {
     /* ---------------------------------------------------------------------
-           Section Heading
-        --------------------------------------------------------------------- */
+       Section Heading
+    --------------------------------------------------------------------- */
 
     title: "Ready to Modernize Your Cloud?",
 
     /* ---------------------------------------------------------------------
-           Supporting Description
-        --------------------------------------------------------------------- */
+       Supporting Description
+    --------------------------------------------------------------------- */
 
     description:
       "Whether you're starting your cloud journey or optimizing an existing platform, our engineers are ready to help.",
 
     /* ---------------------------------------------------------------------
-           Primary Action Button
-        --------------------------------------------------------------------- */
+       Primary Action Button
+    --------------------------------------------------------------------- */
 
     primaryButton: {
       label: "Talk to an Expert",
@@ -444,8 +457,8 @@ const services: ServicesData = {
     },
 
     /* ---------------------------------------------------------------------
-           Secondary Action Button
-        --------------------------------------------------------------------- */
+       Secondary Action Button
+    --------------------------------------------------------------------- */
 
     secondaryButton: {
       label: "View Case Studies",

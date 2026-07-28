@@ -6,7 +6,7 @@
  * Enterprise application footer.
  *
  * Responsibilities:
- * - Display company information.
+ * - Display company branding.
  * - Display grouped navigation.
  * - Display contact information.
  * - Display copyright.
@@ -19,6 +19,12 @@ import siteConfig from "../../config/site";
 
 import Container from "./Container";
 
+/* =============================================================================
+   Company Logo
+============================================================================= */
+
+import logo from "@/assets/logos/Sandtongrid Tech Logo Final png-02.png";
+
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -28,21 +34,31 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.grid}>
-          {/* ======================================================
-                        Company
-                    ====================================================== */}
+          {/* ==========================================================
+              Company Branding
+          ========================================================== */}
 
           <div>
-            <h3 className={styles.heading}>{siteConfig.company.name}</h3>
+            <Link
+              to="/"
+              className={styles.logoLink}
+              aria-label="Sandtongrid Technologies Home"
+            >
+              <img
+                src={logo}
+                alt="Sandtongrid Technologies"
+                className={styles.logo}
+              />
+            </Link>
 
             <p className={styles.description}>
               {siteConfig.company.description}
             </p>
           </div>
 
-          {/* ======================================================
-                        Company Links
-                    ====================================================== */}
+          {/* ==========================================================
+              Company Links
+          ========================================================== */}
 
           <div>
             <h4 className={styles.heading}>Company</h4>
@@ -56,9 +72,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* ======================================================
-                        Services
-                    ====================================================== */}
+          {/* ==========================================================
+              Services
+          ========================================================== */}
 
           <div>
             <h4 className={styles.heading}>Services</h4>
@@ -72,9 +88,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* ======================================================
-                        Contact
-                    ====================================================== */}
+          {/* ==========================================================
+              Contact
+          ========================================================== */}
 
           <div>
             <h4 className={styles.heading}>Contact</h4>

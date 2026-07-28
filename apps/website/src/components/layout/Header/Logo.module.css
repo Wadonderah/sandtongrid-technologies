@@ -3,37 +3,41 @@ File: Logo.module.css
 ------------------------------------------------------------------------------
 Purpose:
 Styles for the Header Logo component.
+
+Responsibilities:
+- Display the official Sandtongrid Technologies logo.
+- Keep the logo responsive.
+- Preserve aspect ratio.
 ******************************************************************************/
 
 .logo {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  transition: transform 0.25s ease;
 }
 
-.logo:hover {
-  transform: translateY(-1px);
+.image {
+  display: block;
+
+  width: auto;
+
+  height: 58px;
+
+  object-fit: contain;
+
+  transition:
+    transform 200ms ease,
+    opacity 200ms ease;
 }
 
-.text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
+.logo:hover .image {
+  transform: scale(1.03);
+
+  opacity: 0.95;
 }
 
-.brand {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--brand-600);
-  letter-spacing: -0.02em;
-}
-
-.company {
-  margin-top: 0.15rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--gray-600);
+@media (max-width: 768px) {
+  .image {
+    height: 46px;
+  }
 }

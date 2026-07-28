@@ -5,29 +5,17 @@
  * Main navigation configuration.
  *
  * Purpose:
- * - Keeps the navigation menu reusable.
- * - Prevents duplicated menu definitions.
- * - Allows Header and future Mobile Menu to use the same data.
+ * - Generate navigation from the centralized route configuration.
+ * - Prevent duplicated route definitions.
+ * - Ensure Header, Footer and Sitemap always stay synchronized.
  * ============================================================================
  */
 
-import { ROUTES } from "./routes";
+import { appRoutes } from "@/config/routes";
 
-export const NAVIGATION_ITEMS = [
-  {
-    label: "Home",
-    path: ROUTES.HOME,
-  },
-  {
-    label: "About",
-    path: ROUTES.ABOUT,
-  },
-  {
-    label: "Services",
-    path: ROUTES.SERVICES,
-  },
-  {
-    label: "Contact",
-    path: ROUTES.CONTACT,
-  },
-];
+export const NAVIGATION_ITEMS = appRoutes
+  .filter((route) => route.navigation)
+  .map((route) => ({
+    label: route.name,
+    path: route.path,
+  }));

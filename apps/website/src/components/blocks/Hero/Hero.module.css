@@ -5,10 +5,9 @@ Purpose:
 Styles for the Home page Hero section.
 
 Responsibilities:
-- Create a clean enterprise hero.
-- Improve typography.
-- Improve CTA hierarchy.
-- Improve spacing.
+- Display the enterprise hero background.
+- Improve typography readability.
+- Apply branded overlay.
 - Support responsive layouts.
 ******************************************************************************/
 
@@ -17,109 +16,125 @@ Responsibilities:
 ============================================================================ */
 
 .hero {
-  padding: 7rem 0;
+  position: relative;
 
-  background: linear-gradient(135deg, var(--brand-50), var(--white));
+  overflow: hidden;
+
+  padding: 8rem 0;
+
+  background:
+    linear-gradient(
+      rgba(15, 23, 42, 0.72),
+      rgba(15, 23, 42, 0.72)
+    ),
+    url("@/assets/images/backgrounds/avnsuresh-ai-generated-8988761_1920.jpg");
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
 }
 
 /* ============================================================================
-   Hero Content
+   Keep content above overlay
 ============================================================================ */
 
 .content {
+  position: relative;
+
+  z-index: 1;
+
   max-width: 760px;
 }
 
 /* ============================================================================
-   Eyebrow Text
+   Eyebrow
 ============================================================================ */
 
 .eyebrow {
-  color: var(--brand-600);
+  margin-bottom: 1rem;
+
+  color: var(--white);
 
   font-weight: 700;
 
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 
   text-transform: uppercase;
 
-  margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
 /* ============================================================================
-   Main Heading
+   Title
 ============================================================================ */
 
 .title {
-  font-size: clamp(3rem, 5vw, 4.8rem);
+  margin-bottom: 1.5rem;
 
-  line-height: 1.1;
+  color: var(--white);
+
+  font-size: clamp(3rem, 5vw, 4.8rem);
 
   font-weight: 800;
 
-  color: var(--gray-900);
-
-  margin-bottom: 1.5rem;
+  line-height: 1.1;
 }
 
 /* ============================================================================
-   Supporting Description
+   Description
 ============================================================================ */
 
 .description {
   max-width: 620px;
 
+  margin-bottom: 2.75rem;
+
+  color: rgba(255, 255, 255, 0.9);
+
   font-size: 1.15rem;
 
   line-height: 1.8;
-
-  color: var(--gray-600);
-
-  margin-bottom: 2.75rem;
 }
 
 /* ============================================================================
-   Hero Actions
+   Actions
 ============================================================================ */
 
 .actions {
   display: flex;
 
+  flex-wrap: wrap;
+
   align-items: center;
 
   gap: 1.5rem;
-
-  flex-wrap: wrap;
 }
 
 /* ============================================================================
    Secondary Button
-   ---------------------------------------------------------------------------
-   Prevent the outline button from looking disabled.
 ============================================================================ */
 
 .secondaryButton {
-  color: var(--brand-700) !important;
-
-  border: 2px solid var(--brand-600) !important;
+  border: 2px solid var(--white) !important;
 
   background: transparent !important;
+
+  color: var(--white) !important;
 
   font-weight: 600;
 
   transition:
     background 0.25s ease,
     color 0.25s ease,
-    border-color 0.25s ease,
     transform 0.25s ease;
 }
 
 .secondaryButton:hover {
-  background: var(--brand-600) !important;
+  background: var(--white) !important;
 
-  color: var(--white) !important;
-
-  border-color: var(--brand-600) !important;
+  color: var(--color-heading) !important;
 
   transform: translateY(-2px);
 }
@@ -130,11 +145,11 @@ Responsibilities:
 
 @media (max-width: 768px) {
   .hero {
-    padding: 5rem 0;
+    padding: 6rem 0;
   }
 
   .title {
-    font-size: clamp(2.3rem, 8vw, 3.4rem);
+    font-size: clamp(2.3rem, 8vw, 3.5rem);
   }
 
   .description {
@@ -147,7 +162,7 @@ Responsibilities:
     align-items: stretch;
   }
 
-  .actions button {
+  .actions > * {
     width: 100%;
   }
 }

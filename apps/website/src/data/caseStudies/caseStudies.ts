@@ -77,8 +77,8 @@ interface CaseStudiesData {
 
 const caseStudies: CaseStudiesData = {
   /* =========================================================================
-       Hero Section
-    ========================================================================= */
+     Hero Section
+  ========================================================================= */
 
   hero: {
     eyebrow: "Case Studies",
@@ -90,65 +90,66 @@ const caseStudies: CaseStudiesData = {
   },
 
   /* =========================================================================
-       Featured Case Studies
-    ========================================================================= */
+     Featured Case Studies
+  ========================================================================= */
 
   featured: {
     title: "Featured Success Stories",
 
     description:
-      "A selection of cloud projects delivered by our engineering team.",
+      "A selection of transformation projects demonstrating measurable business outcomes across cloud migration, DevOps automation, cost optimization and modern infrastructure.",
 
     studies: [
       {
-        title: "AWS Cloud Migration",
+        title: "Enterprise AWS Cloud Migration",
 
         industry: "Financial Services",
 
         challenge:
-          "Legacy infrastructure limited scalability and increased operational costs.",
+          "Legacy on-premises infrastructure limited scalability, disaster recovery and operational agility while increasing maintenance costs.",
 
         solution:
-          "Migrated workloads to AWS using Terraform, automated deployments and modern networking.",
+          "Designed a secure AWS landing zone, migrated workloads using Infrastructure as Code with Terraform, implemented automated CI/CD pipelines and modernized networking following AWS Well-Architected principles.",
 
         outcome:
-          "Improved availability, stronger security and reduced operational overhead.",
+          "Improved platform availability, strengthened security posture, reduced infrastructure management effort and enabled future cloud scalability.",
       },
 
       {
-        title: "DevOps Transformation",
+        title: "DevOps Platform Modernization",
 
         industry: "Technology",
 
         challenge:
-          "Manual deployments slowed software delivery and introduced production risk.",
+          "Manual deployments created inconsistent environments, frequent release delays and increased operational risk.",
 
         solution:
-          "Implemented CI/CD pipelines, Infrastructure as Code and Kubernetes.",
+          "Implemented GitHub Actions CI/CD, Docker containerization, Kubernetes orchestration and Infrastructure as Code to standardize deployment processes.",
 
         outcome:
-          "Faster deployments with improved reliability and developer productivity.",
+          "Accelerated software delivery, reduced deployment failures, improved developer productivity and increased release confidence.",
       },
 
       {
-        title: "Cloud Cost Optimization",
+        title: "Cloud Cost Optimization Program",
 
         industry: "Healthcare",
 
         challenge:
-          "Cloud spending continued to increase without visibility or governance.",
+          "Rapid cloud adoption resulted in increasing AWS costs with limited visibility into resource utilization.",
 
         solution:
-          "Introduced monitoring, tagging standards, rightsizing and cost reporting.",
+          "Introduced governance, resource tagging standards, monitoring dashboards, rightsizing recommendations and FinOps reporting.",
 
-        outcome: "Lower cloud costs while maintaining application performance.",
+        outcome:
+          "Reduced unnecessary cloud expenditure while maintaining application performance, reliability and operational visibility.",
       },
     ],
   },
 
   /* =========================================================================
-       Success Metrics
-    ========================================================================= */
+     Success Metrics
+  ========================================================================= */
 
   metrics: {
     title: "Results That Matter",
@@ -196,29 +197,14 @@ const caseStudies: CaseStudiesData = {
   },
 
   /* =========================================================================
-       Client Testimonials
-       -------------------------------------------------------------------------
-       Customer feedback highlighting successful engagements and long-term
-       partnerships.
-    ========================================================================= */
+     Client Testimonials
+  ========================================================================= */
 
   testimonials: {
-    /* ---------------------------------------------------------------------
-           Section Heading
-        --------------------------------------------------------------------- */
-
     title: "What Our Clients Say",
-
-    /* ---------------------------------------------------------------------
-           Supporting Description
-        --------------------------------------------------------------------- */
 
     description:
       "Long-term partnerships are built on trust, measurable results and consistent delivery.",
-
-    /* ---------------------------------------------------------------------
-           Customer Testimonials
-        --------------------------------------------------------------------- */
 
     items: [
       {
@@ -251,30 +237,25 @@ const caseStudies: CaseStudiesData = {
   },
 
   /* =========================================================================
-       Customer Benefits
-    ========================================================================= */
+     Customer Benefits
+  ========================================================================= */
 
   benefits: {
     title: "Business Outcomes",
 
     items: [
       "Improved Security",
-
       "Lower Cloud Costs",
-
       "Higher Availability",
-
       "Faster Deployments",
-
       "Infrastructure Automation",
-
       "Scalable Cloud Platforms",
     ],
   },
 
   /* =========================================================================
-       Call To Action
-    ========================================================================= */
+     Call To Action
+  ========================================================================= */
 
   cta: {
     title: "Let's Build Your Success Story",

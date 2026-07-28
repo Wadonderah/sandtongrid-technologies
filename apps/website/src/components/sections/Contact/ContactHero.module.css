@@ -1,40 +1,156 @@
 /******************************************************************************
-Contact Hero
+File: ContactForm.module.css
+------------------------------------------------------------------------------
+Purpose:
+Styles the Contact Form section.
+
+Responsibilities:
+- Layout the Contact section.
+- Style the section heading.
+- Style form fields.
+- Provide consistent input and textarea appearance.
+- Handle focus states.
+- Provide responsive behaviour.
 ******************************************************************************/
 
+/* =============================================================================
+   Contact Section
+============================================================================= */
+
 .section {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-primary-dark)
-  );
-  color: var(--color-on-primary);
-  padding: 6rem 0;
+  background: var(--color-background);
 }
 
-.content {
-  max-width: 760px;
+/* =============================================================================
+   Section Header
+============================================================================= */
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
 }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 1rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
+/* ---------------------------------------------------------------------------
+   Main Heading
+---------------------------------------------------------------------------- */
 
 .title {
-  margin-bottom: 1.5rem;
+  margin: 0 0 1rem;
 }
 
+/* ---------------------------------------------------------------------------
+   Supporting Description
+---------------------------------------------------------------------------- */
+
 .description {
-  max-width: 680px;
-  font-size: 1.125rem;
-  line-height: 1.8;
-  opacity: 0.95;
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* =============================================================================
+   Contact Form Layout
+============================================================================= */
+
+.form {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* =============================================================================
+   Individual Form Field
+============================================================================= */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Field Labels
+---------------------------------------------------------------------------- */
+
+.field label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* =============================================================================
+   Shared Input Styles
+============================================================================= */
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* ---------------------------------------------------------------------------
+   Textarea
+---------------------------------------------------------------------------- */
+
+.field textarea {
+  resize: vertical;
+  min-height: 180px;
+}
+
+/* ---------------------------------------------------------------------------
+   Placeholder Text
+---------------------------------------------------------------------------- */
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* ---------------------------------------------------------------------------
+   Focus State
+---------------------------------------------------------------------------- */
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 15%);
+}
+
+/* =============================================================================
+   Submit Button
+============================================================================= */
+
+.form > button {
+  justify-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+/* =============================================================================
+   Responsive Layout
+============================================================================= */
+
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .form {
+    gap: 1.25rem;
+  }
+
+  .form > button {
+    width: 100%;
+  }
 }

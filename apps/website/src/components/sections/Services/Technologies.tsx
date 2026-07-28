@@ -2,11 +2,12 @@
 File: Technologies.tsx
 ------------------------------------------------------------------------------
 Purpose:
-Display the technologies used by Sandtongrid Technologies.
+Display the technologies and platforms used by Sandtongrid Technologies.
 
 Responsibilities:
 - Render the Technologies section.
 - Read all technology data from the centralized Services data source.
+- Present technologies as capability badges.
 - Keep UI separate from business content.
 ******************************************************************************/
 
@@ -30,29 +31,42 @@ import type { TechnologiesProps } from "./Technologies.types";
 ============================================================================= */
 
 const Technologies: FC<TechnologiesProps> = ({ className = "" }) => {
-  /* -------------------------------------------------------------------------
-       Read data from the centralized Services data source.
-    ------------------------------------------------------------------------- */
-
   const { technologies } = services;
 
   return (
     <Section className={`${styles.section} ${className}`.trim()}>
       <Container>
         {/* ==========================================================
-                    Section Heading
-                ========================================================== */}
+            Section Header
+        ========================================================== */}
 
-        <h2>{technologies.title}</h2>
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>Technology Stack</p>
+
+          <h2 className={styles.title}>
+            {technologies.title}
+          </h2>
+
+          <p className={styles.description}>
+            We leverage modern cloud platforms, DevOps tooling and proven
+            engineering technologies to build secure, scalable and
+            production-ready solutions.
+          </p>
+        </div>
 
         {/* ==========================================================
-                    Technology Cards
-                ========================================================== */}
+            Technology Grid
+        ========================================================== */}
 
         <div className={styles.grid}>
           {technologies.items.map((technology) => (
-            <article key={technology} className={styles.card}>
-              {technology}
+            <article
+              key={technology}
+              className={styles.card}
+            >
+              <span className={styles.badge}>
+                {technology}
+              </span>
             </article>
           ))}
         </div>

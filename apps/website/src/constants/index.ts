@@ -9,8 +9,6 @@ export * from "./company";
 
 export * from "./navigation";
 
-export * from "./routes";
-
 export * from "./services";
 
 export * from "./social";
