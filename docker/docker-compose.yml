@@ -1,0 +1,37 @@
+###############################################################################
+# Docker Compose
+# -----------------------------------------------------------------------------
+# Purpose:
+# Run the Sandtongrid Technologies Website locally.
+#
+# Run from:
+#   sandtongrid-technologies/
+#
+# Commands:
+#   docker compose -f docker/docker-compose.yml up --build -d
+#   docker compose -f docker/docker-compose.yml down
+###############################################################################
+
+services:
+
+  website:
+
+    container_name: sandtongrid-website
+
+    image: sandtongrid-website:latest
+
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.website
+
+    ports:
+      - "8080:80"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
