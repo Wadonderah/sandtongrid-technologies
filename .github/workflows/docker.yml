@@ -1,0 +1,106 @@
+###############################################################################
+# Docker CI Pipeline
+# -----------------------------------------------------------------------------
+# Purpose:
+# Build and validate the Sandtongrid Technologies website container on every
+# push and pull request.
+###############################################################################
+
+name: Docker CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+env:
+  IMAGE_NAME: sandtongrid-website
+
+jobs:
+
+  docker-build:
+
+    name: Build Docker Image
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+
+      #########################################################################
+      # Checkout Repository
+      #########################################################################
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      #########################################################################
+      # Setup Docker Buildx
+      #########################################################################
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      #########################################################################
+      # Build Docker Image
+      #########################################################################
+
+      - name: Build Image
+
+        uses: docker/build-push-action@v6
+
+        with:
+          context: .
+          file: docker/Dockerfile.website
+          push: false
+          load: true
+          tags: ${{ env.IMAGE_NAME }}:latest
+
+      #########################################################################
+      # Smoke Test
+      #########################################################################
+
+      - name: Start Container
+
+        run: |
+          docker run -d \
+            --name website \
+            -p 8080:80 \
+            $IMAGE_NAME:latest
+
+      #########################################################################
+      # Wait for Startup
+      #########################################################################
+
+      - name: Wait
+
+        run: sleep 10
+
+      #########################################################################
+      # Verify Website
+      #########################################################################
+
+      - name: Health Check
+
+        run: |
+          curl --fail http://localhost:8080
+
+      #########################################################################
+      # Cleanup
+      #########################################################################
+
+      - name: Stop Container
+
+        if: always()
+
+        run: |
+          docker stop website
+          docker rm website
