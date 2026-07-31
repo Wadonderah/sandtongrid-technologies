@@ -1,9 +1,15 @@
 ###############################################################################
-# Local Values
+# AWS Provider Configuration
 ###############################################################################
 
-locals {
+provider "aws" {
 
-  role_prefix = lower(replace(var.project_name, " ", "-"))
+  region = var.aws_region
+
+  default_tags {
+
+    tags = local.common_tags
+
+  }
 
 }

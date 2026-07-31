@@ -1,47 +1,47 @@
 ###############################################################################
-# Bucket Name
+# Bucket ID
 ###############################################################################
 
-variable "bucket_name" {
+output "bucket_id" {
 
-  description = "Website bucket name."
+  description = "Logging bucket ID."
 
-  type = string
+  value = aws_s3_bucket.logs.id
 
 }
 
 ###############################################################################
-# Environment
+# Bucket ARN
 ###############################################################################
 
-variable "environment" {
+output "bucket_arn" {
 
-  description = "Deployment environment."
+  description = "Logging bucket ARN."
 
-  type = string
+  value = aws_s3_bucket.logs.arn
 
 }
 
 ###############################################################################
-# Project Name
+# Bucket Domain Name
 ###############################################################################
 
-variable "project_name" {
+output "bucket_domain_name" {
 
-  description = "Project name."
+  description = "Logging bucket domain."
 
-  type = string
+  value = aws_s3_bucket.logs.bucket_domain_name
 
 }
 
 ###############################################################################
-# Common Tags
+# Regional Domain Name
 ###############################################################################
 
-variable "common_tags" {
+output "bucket_regional_domain_name" {
 
-  description = "Common tags."
+  description = "Regional bucket domain."
 
-  type = map(string)
+  value = aws_s3_bucket.logs.bucket_regional_domain_name
 
 }

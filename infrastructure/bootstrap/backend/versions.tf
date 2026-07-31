@@ -1,14 +1,21 @@
 ###############################################################################
-# Local Values
+# Terraform Version
 ###############################################################################
 
-locals {
+terraform {
 
-  certificate_tags = merge(
-    var.common_tags,
-    {
-      Name = var.domain_name
+  required_version = ">= 1.8.0"
+
+  required_providers {
+
+    aws = {
+
+      source = "hashicorp/aws"
+
+      version = "~> 6.0"
+
     }
-  )
+
+  }
 
 }

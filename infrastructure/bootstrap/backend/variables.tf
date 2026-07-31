@@ -1,38 +1,52 @@
 ###############################################################################
-# Domain Name
+# AWS Region
 ###############################################################################
 
-variable "domain_name" {
+variable "aws_region" {
 
-  description = "Primary domain name."
+  description = "AWS region where bootstrap resources are created."
+
+  type = string
+
+  default = "eu-west-1"
+
+}
+
+###############################################################################
+# Terraform Backend S3 Bucket
+###############################################################################
+
+variable "terraform_state_bucket_name" {
+
+  description = "Terraform remote state bucket."
 
   type = string
 
 }
 
 ###############################################################################
-# Subject Alternative Names
+# Terraform Lock Table
 ###############################################################################
 
-variable "subject_alternative_names" {
+variable "terraform_lock_table_name" {
 
-  description = "Additional domain names."
+  description = "Terraform state lock table."
 
-  type = list(string)
-
-  default = []
+  type = string
 
 }
 
 ###############################################################################
-# Route53 Hosted Zone ID
+# Project Name
 ###############################################################################
 
-variable "hosted_zone_id" {
+variable "project_name" {
 
-  description = "Route53 Hosted Zone ID."
+  description = "Project name."
 
   type = string
+
+  default = "Sandtongrid Technologies"
 
 }
 
@@ -46,16 +60,6 @@ variable "environment" {
 
   type = string
 
-}
-
-###############################################################################
-# Common Tags
-###############################################################################
-
-variable "common_tags" {
-
-  description = "Common resource tags."
-
-  type = map(string)
+  default = "bootstrap"
 
 }

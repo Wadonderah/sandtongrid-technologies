@@ -1,36 +1,22 @@
 ###############################################################################
-# Domain Name
+# Bucket Name
 ###############################################################################
 
-variable "domain_name" {
+variable "bucket_name" {
 
-  description = "Primary domain name."
+  description = "Logging bucket name."
 
   type = string
 
 }
 
 ###############################################################################
-# Subject Alternative Names
+# Project Name
 ###############################################################################
 
-variable "subject_alternative_names" {
+variable "project_name" {
 
-  description = "Additional domain names."
-
-  type = list(string)
-
-  default = []
-
-}
-
-###############################################################################
-# Route53 Hosted Zone ID
-###############################################################################
-
-variable "hosted_zone_id" {
-
-  description = "Route53 Hosted Zone ID."
+  description = "Project name."
 
   type = string
 
