@@ -1,5 +1,7 @@
 ###############################################################################
 # CodeBuild IAM Role
+#
+# This IAM role is assumed by AWS CodeBuild during build execution.
 ###############################################################################
 
 resource "aws_iam_role" "codebuild" {
@@ -19,6 +21,9 @@ resource "aws_iam_role" "codebuild" {
 
 ###############################################################################
 # CodePipeline IAM Role
+#
+# This IAM role is assumed by AWS CodePipeline while orchestrating the CI/CD
+# workflow.
 ###############################################################################
 
 resource "aws_iam_role" "codepipeline" {
@@ -38,6 +43,12 @@ resource "aws_iam_role" "codepipeline" {
 
 ###############################################################################
 # CodeBuild IAM Policy
+#
+# Principle of Least Privilege
+#
+# Required permissions:
+# - Write build logs to CloudWatch
+# - Read and upload build artifacts to Amazon S3
 ###############################################################################
 
 resource "aws_iam_policy" "codebuild" {
@@ -52,15 +63,43 @@ resource "aws_iam_policy" "codebuild" {
 
     Statement = [
 
+      #########################################################################
+      # CloudWatch Logs
+      #########################################################################
+
       {
+
+        Sid = "CloudWatchLogs"
 
         Effect = "Allow"
 
         Action = [
 
-          "logs:*",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
 
-          "s3:*"
+        ]
+
+        Resource = "*"
+
+      },
+
+      #########################################################################
+      # Amazon S3 Artifacts
+      #########################################################################
+
+      {
+
+        Sid = "S3Artifacts"
+
+        Effect = "Allow"
+
+        Action = [
+
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:ListBucket"
 
         ]
 
@@ -76,6 +115,13 @@ resource "aws_iam_policy" "codebuild" {
 
 ###############################################################################
 # CodePipeline IAM Policy
+#
+# Principle of Least Privilege
+#
+# Required permissions:
+# - Read and write pipeline artifacts in Amazon S3
+# - Start and monitor CodeBuild projects
+# - Publish execution events to CloudWatch
 ###############################################################################
 
 resource "aws_iam_policy" "codepipeline" {
@@ -90,17 +136,62 @@ resource "aws_iam_policy" "codepipeline" {
 
     Statement = [
 
+      #########################################################################
+      # Amazon S3
+      #########################################################################
+
       {
+
+        Sid = "PipelineArtifacts"
 
         Effect = "Allow"
 
         Action = [
 
-          "s3:*",
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:ListBucket"
 
-          "codebuild:*",
+        ]
 
-          "cloudwatch:*"
+        Resource = "*"
+
+      },
+
+      #########################################################################
+      # CodeBuild
+      #########################################################################
+
+      {
+
+        Sid = "CodeBuild"
+
+        Effect = "Allow"
+
+        Action = [
+
+          "codebuild:StartBuild",
+          "codebuild:BatchGetBuilds"
+
+        ]
+
+        Resource = "*"
+
+      },
+
+      #########################################################################
+      # CloudWatch
+      #########################################################################
+
+      {
+
+        Sid = "CloudWatch"
+
+        Effect = "Allow"
+
+        Action = [
+
+          "cloudwatch:PutMetricData"
 
         ]
 
@@ -115,7 +206,7 @@ resource "aws_iam_policy" "codepipeline" {
 }
 
 ###############################################################################
-# Attach Policy to CodeBuild Role
+# Attach CodeBuild Policy
 ###############################################################################
 
 resource "aws_iam_role_policy_attachment" "codebuild" {
@@ -127,7 +218,7 @@ resource "aws_iam_role_policy_attachment" "codebuild" {
 }
 
 ###############################################################################
-# Attach Policy to CodePipeline Role
+# Attach CodePipeline Policy
 ###############################################################################
 
 resource "aws_iam_role_policy_attachment" "codepipeline" {

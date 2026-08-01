@@ -1,9 +1,44 @@
 # ======================================
+# Terraform
+# ======================================
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+terraform.tfvars
+*.auto.tfvars
+!terraform.tfvars.example
+*.tfplan
+*-plan.txt
+.terraformrc
+terraform.rc
+*_override.tf.json
+.terraform.lock.hcl
+*.tfstate.backup
+
+# ======================================
+# Local exports and plans
+# ======================================
+*.json
+*.tfplan
+*-plan.txt
+graph.dot
+
+# ======================================
 # Operating System
 # ======================================
 .DS_Store
 Thumbs.db
 desktop.ini
+*.exe
+*.dll
+*.so
+*.dylib
 
 # ======================================
 # IDEs
@@ -11,6 +46,12 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+*.swo
+*~
+*.iml
+.project
+.classpath
+.settings/
 
 # ======================================
 # Logs
@@ -20,6 +61,8 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # ======================================
 # Environment Variables
@@ -27,68 +70,91 @@ yarn-error.log*
 .env
 .env.*
 !.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # ======================================
-# Node
+# Node / NPM / Yarn / PNPM
 # ======================================
 node_modules/
 dist/
 build/
 coverage/
 .cache/
+.pnpm-store/
+.eslintcache
+*.tsbuildinfo
+*.tgz
+.DS_Store
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
 # ======================================
-# Terraform
+# React / Vite / Frontend
 # ======================================
-**/.terraform/
-*.tfstate
-*.tfstate.*
-crash.log
-crash.*.log
-terraform.tfvars
-*.auto.tfvars
-
-# Keep examples only
-!terraform.tfvars.example
-
-# Terraform plan files
-*.tfplan
-
-# Local override files
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-# Terraform CLI config
-.terraformrc
-terraform.rc
+apps/**/dist/
+apps/**/.vite/
+apps/**/node_modules/
+apps/**/build/
+apps/**/.cache/
+**/vite.config.js
+**/vite.config.ts
 
 # ======================================
 # AWS
 # ======================================
 .aws-sam/
 .aws/
+*.pem
+*.key
+*.crt
+*.cert
+*.csr
 
 # ======================================
 # Python
 # ======================================
 __pycache__/
+*.py[cod]
 *.pyc
 .venv/
 venv/
-
-# ======================================
-# React / Vite
-# ======================================
-apps/**/dist/
-apps/**/.vite/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
 
 # ======================================
 # Testing
 # ======================================
 playwright-report/
 test-results/
+*.test.js
+*.spec.js
+jest.config.js
+*.snap
+cypress/
+coverage/
+
+# ======================================
+# Docker
+# ======================================
+docker-compose*.override.yml
+docker-compose*.override.yaml
+*.dockerignore
+.docker/
+docker-sync.yml
 
 # ======================================
 # Misc
@@ -96,3 +162,48 @@ test-results/
 *.bak
 *.tmp
 *.temp
+*.orig
+*.rej
+*~
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+# ======================================
+# CI/CD
+# ======================================
+.gitlab/
+.ci/
+*.sublime-*
+
+# ======================================
+# Backups and Archives
+# ======================================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.gz
+*.bz2
+
+# ======================================
+# Documentation temporary files
+# ======================================
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+
+# ======================================
+# Secrets and sensitive files
+# ======================================
+.secrets
+*.secret
+*.secrets
+secrets/
+key.pem
+*.p12
+*.pfx
