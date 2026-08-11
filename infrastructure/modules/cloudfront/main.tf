@@ -22,11 +22,11 @@ resource "aws_cloudfront_origin_access_control" "website" {
 
 resource "aws_cloudfront_distribution" "website" {
 
-  enabled             = true
+  enabled = true
 
-  is_ipv6_enabled     = true
+  is_ipv6_enabled = true
 
-  comment             = var.domain_name
+  comment = var.domain_name
 
   default_root_object = "index.html"
 
