@@ -1,0 +1,1117 @@
+# module.acm.aws_acm_certificate.certificate:
+resource "aws_acm_certificate" "certificate" {
+    arn                       = "arn:aws:acm:us-east-1:809306106692:certificate/948bdd64-505a-49c4-bcb3-ab643259c52a"
+    certificate_authority_arn = null
+    domain_name               = "www.sandtongridtech.com"
+    domain_validation_options = [
+        {
+            domain_name           = "sandtongridtech.com"
+            resource_record_name  = "_8e7bd3dcc1cd78fa00167d5d90be967c.sandtongridtech.com."
+            resource_record_type  = "CNAME"
+            resource_record_value = "_243d84e7e23f3172fbc6d90a969490ac.jkddzztszm.acm-validations.aws."
+        },
+        {
+            domain_name           = "www.sandtongridtech.com"
+            resource_record_name  = "_07357317a3db8035274beb5a9caae00f.www.sandtongridtech.com."
+            resource_record_type  = "CNAME"
+            resource_record_value = "_9675696e51ead3c9dea1e0cf297da6e9.jkddzztszm.acm-validations.aws."
+        },
+    ]
+    early_renewal_duration    = null
+    id                        = "arn:aws:acm:us-east-1:809306106692:certificate/948bdd64-505a-49c4-bcb3-ab643259c52a"
+    key_algorithm             = "RSA_2048"
+    not_after                 = "2027-02-16T23:59:59Z"
+    not_before                = "2026-08-03T00:00:00Z"
+    pending_renewal           = false
+    private_key_wo            = (write-only attribute)
+    region                    = "us-east-1"
+    renewal_eligibility       = "INELIGIBLE"
+    renewal_summary           = []
+    status                    = "ISSUED"
+    subject_alternative_names = [
+        "sandtongridtech.com",
+        "www.sandtongridtech.com",
+    ]
+    tags                      = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                  = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    type                      = "AMAZON_ISSUED"
+    validation_emails         = []
+    validation_method         = "DNS"
+
+    options {
+        certificate_transparency_logging_preference = "ENABLED"
+        export                                      = "DISABLED"
+    }
+}
+
+# module.acm.aws_acm_certificate_validation.certificate:
+resource "aws_acm_certificate_validation" "certificate" {
+    certificate_arn         = "arn:aws:acm:us-east-1:809306106692:certificate/948bdd64-505a-49c4-bcb3-ab643259c52a"
+    id                      = "2026-08-03 04:39:52.428 +0000 UTC"
+    region                  = "us-east-1"
+    validation_record_fqdns = [
+        "_07357317a3db8035274beb5a9caae00f.www.sandtongridtech.com",
+        "_8e7bd3dcc1cd78fa00167d5d90be967c.sandtongridtech.com",
+    ]
+}
+
+# module.acm.aws_route53_record.validation["sandtongridtech.com"]:
+resource "aws_route53_record" "validation" {
+    fqdn                             = "_8e7bd3dcc1cd78fa00167d5d90be967c.sandtongridtech.com"
+    health_check_id                  = null
+    id                               = "Z05297659GA8N75266FV__8e7bd3dcc1cd78fa00167d5d90be967c.sandtongridtech.com._CNAME"
+    multivalue_answer_routing_policy = false
+    name                             = "_8e7bd3dcc1cd78fa00167d5d90be967c.sandtongridtech.com"
+    records                          = [
+        "_243d84e7e23f3172fbc6d90a969490ac.jkddzztszm.acm-validations.aws.",
+    ]
+    set_identifier                   = null
+    ttl                              = 60
+    type                             = "CNAME"
+    zone_id                          = "Z05297659GA8N75266FV"
+}
+
+# module.acm.aws_route53_record.validation["www.sandtongridtech.com"]:
+resource "aws_route53_record" "validation" {
+    fqdn                             = "_07357317a3db8035274beb5a9caae00f.www.sandtongridtech.com"
+    health_check_id                  = null
+    id                               = "Z05297659GA8N75266FV__07357317a3db8035274beb5a9caae00f.www.sandtongridtech.com._CNAME"
+    multivalue_answer_routing_policy = false
+    name                             = "_07357317a3db8035274beb5a9caae00f.www.sandtongridtech.com"
+    records                          = [
+        "_9675696e51ead3c9dea1e0cf297da6e9.jkddzztszm.acm-validations.aws.",
+    ]
+    set_identifier                   = null
+    ttl                              = 60
+    type                             = "CNAME"
+    zone_id                          = "Z05297659GA8N75266FV"
+}
+# module.cloudfront.data.aws_iam_policy_document.cloudfront_access:
+data "aws_iam_policy_document" "cloudfront_access" {
+    id            = "3924469098"
+    json          = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "s3:GetObject"
+                    Condition = {
+                        StringEquals = {
+                            "AWS:SourceArn" = "arn:aws:cloudfront::809306106692:distribution/E3DRU2U6N6NI39"
+                        }
+                    }
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "cloudfront.amazonaws.com"
+                    }
+                    Resource  = "arn:aws:s3:::www.sandtongridtech.com/*"
+                    Sid       = "AllowCloudFrontService"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    minified_json = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "s3:GetObject"
+                    Condition = {
+                        StringEquals = {
+                            "AWS:SourceArn" = "arn:aws:cloudfront::809306106692:distribution/E3DRU2U6N6NI39"
+                        }
+                    }
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "cloudfront.amazonaws.com"
+                    }
+                    Resource  = "arn:aws:s3:::www.sandtongridtech.com/*"
+                    Sid       = "AllowCloudFrontService"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    version       = "2012-10-17"
+
+    statement {
+        actions       = [
+            "s3:GetObject",
+        ]
+        effect        = "Allow"
+        not_actions   = []
+        not_resources = []
+        resources     = [
+            "arn:aws:s3:::www.sandtongridtech.com/*",
+        ]
+        sid           = "AllowCloudFrontService"
+
+        condition {
+            test     = "StringEquals"
+            values   = [
+                "arn:aws:cloudfront::809306106692:distribution/E3DRU2U6N6NI39",
+            ]
+            variable = "AWS:SourceArn"
+        }
+
+        principals {
+            identifiers = [
+                "cloudfront.amazonaws.com",
+            ]
+            type        = "Service"
+        }
+    }
+}
+
+# module.cloudfront.aws_cloudfront_distribution.website:
+resource "aws_cloudfront_distribution" "website" {
+    aliases                         = [
+        "www.sandtongridtech.com",
+    ]
+    anycast_ip_list_id              = null
+    arn                             = "arn:aws:cloudfront::809306106692:distribution/E3DRU2U6N6NI39"
+    caller_reference                = "terraform-20260801121816605900000001"
+    comment                         = "www.sandtongridtech.com"
+    continuous_deployment_policy_id = null
+    default_root_object             = "index.html"
+    domain_name                     = "dtondcu2h22w9.cloudfront.net"
+    enabled                         = true
+    etag                            = "ETVPDKIKX0DER"
+    hosted_zone_id                  = "Z2FDTNDATAQYW2"
+    http_version                    = "http2"
+    id                              = "E3DRU2U6N6NI39"
+    in_progress_validation_batches  = 0
+    is_ipv6_enabled                 = true
+    last_modified_time              = "2026-08-03 04:56:53.903 +0000 UTC"
+    logging_v1_enabled              = true
+    price_class                     = "PriceClass_100"
+    retain_on_delete                = false
+    staging                         = false
+    status                          = "Deployed"
+    tags                            = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    trusted_key_groups              = [
+        {
+            enabled = false
+            items   = []
+        },
+    ]
+    trusted_signers                 = [
+        {
+            enabled = false
+            items   = []
+        },
+    ]
+    wait_for_deployment             = true
+    web_acl_id                      = null
+
+    default_cache_behavior {
+        allowed_methods            = [
+            "GET",
+            "HEAD",
+        ]
+        cache_policy_id            = null
+        cached_methods             = [
+            "GET",
+            "HEAD",
+        ]
+        compress                   = true
+        default_ttl                = 0
+        field_level_encryption_id  = null
+        max_ttl                    = 0
+        min_ttl                    = 0
+        origin_request_policy_id   = null
+        realtime_log_config_arn    = null
+        response_headers_policy_id = null
+        smooth_streaming           = false
+        target_origin_id           = "s3-www.sandtongridtech.com"
+        trusted_key_groups         = []
+        trusted_signers            = []
+        viewer_protocol_policy     = "redirect-to-https"
+
+        forwarded_values {
+            headers                 = []
+            query_string            = false
+            query_string_cache_keys = []
+
+            cookies {
+                forward           = "none"
+                whitelisted_names = []
+            }
+        }
+
+        grpc_config {
+            enabled = false
+        }
+    }
+
+    logging_config {
+        bucket          = "logs.sandtongridtech.com.s3.eu-west-1.amazonaws.com"
+        include_cookies = false
+        prefix          = "cloudfront/"
+    }
+
+    origin {
+        connection_attempts         = 3
+        connection_timeout          = 10
+        domain_name                 = "www.sandtongridtech.com.s3.eu-west-1.amazonaws.com"
+        origin_access_control_id    = "EMPE00OOEKK0"
+        origin_id                   = "s3-www.sandtongridtech.com"
+        origin_path                 = null
+        response_completion_timeout = 0
+    }
+
+    restrictions {
+        geo_restriction {
+            locations        = []
+            restriction_type = "none"
+        }
+    }
+
+    viewer_certificate {
+        acm_certificate_arn            = "arn:aws:acm:us-east-1:809306106692:certificate/948bdd64-505a-49c4-bcb3-ab643259c52a"
+        cloudfront_default_certificate = false
+        iam_certificate_id             = null
+        minimum_protocol_version       = "TLSv1.2_2021"
+        ssl_support_method             = "sni-only"
+    }
+}
+
+# module.cloudfront.aws_cloudfront_origin_access_control.website:
+resource "aws_cloudfront_origin_access_control" "website" {
+    arn                               = "arn:aws:cloudfront::809306106692:origin-access-control/EMPE00OOEKK0"
+    description                       = "Origin Access Control"
+    etag                              = "ETVPDKIKX0DER"
+    id                                = "EMPE00OOEKK0"
+    name                              = "www.sandtongridtech.com-oac"
+    origin_access_control_origin_type = "s3"
+    signing_behavior                  = "always"
+    signing_protocol                  = "sigv4"
+}
+
+# module.cloudfront.aws_s3_bucket_policy.website:
+resource "aws_s3_bucket_policy" "website" {
+    bucket = "www.sandtongridtech.com"
+    id     = "www.sandtongridtech.com"
+    policy = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "s3:GetObject"
+                    Condition = {
+                        StringEquals = {
+                            "AWS:SourceArn" = "arn:aws:cloudfront::809306106692:distribution/E3DRU2U6N6NI39"
+                        }
+                    }
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "cloudfront.amazonaws.com"
+                    }
+                    Resource  = "arn:aws:s3:::www.sandtongridtech.com/*"
+                    Sid       = "AllowCloudFrontService"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    region = "eu-west-1"
+}
+# module.cloudwatch.aws_cloudwatch_log_group.logs["cloudfront"]:
+resource "aws_cloudwatch_log_group" "logs" {
+    arn                         = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/cloudfront/www.sandtongridtech.com"
+    deletion_protection_enabled = false
+    id                          = "/aws/cloudfront/www.sandtongridtech.com"
+    kms_key_id                  = null
+    log_group_class             = "STANDARD"
+    name                        = "/aws/cloudfront/www.sandtongridtech.com"
+    name_prefix                 = null
+    region                      = "eu-west-1"
+    retention_in_days           = 7
+    skip_destroy                = false
+    tags                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/cloudfront/www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                    = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/cloudfront/www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+}
+
+# module.cloudwatch.aws_cloudwatch_log_group.logs["codebuild"]:
+resource "aws_cloudwatch_log_group" "logs" {
+    arn                         = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/codebuild/Sandtongrid-Technologies-prod"
+    deletion_protection_enabled = false
+    id                          = "/aws/codebuild/Sandtongrid-Technologies-prod"
+    kms_key_id                  = null
+    log_group_class             = "STANDARD"
+    name                        = "/aws/codebuild/Sandtongrid-Technologies-prod"
+    name_prefix                 = null
+    region                      = "eu-west-1"
+    retention_in_days           = 7
+    skip_destroy                = false
+    tags                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/codebuild/Sandtongrid-Technologies-prod"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                    = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/codebuild/Sandtongrid-Technologies-prod"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+}
+
+# module.cloudwatch.aws_cloudwatch_log_group.logs["codepipeline"]:
+resource "aws_cloudwatch_log_group" "logs" {
+    arn                         = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/codepipeline/Sandtongrid-Technologies-prod"
+    deletion_protection_enabled = false
+    id                          = "/aws/codepipeline/Sandtongrid-Technologies-prod"
+    kms_key_id                  = null
+    log_group_class             = "STANDARD"
+    name                        = "/aws/codepipeline/Sandtongrid-Technologies-prod"
+    name_prefix                 = null
+    region                      = "eu-west-1"
+    retention_in_days           = 7
+    skip_destroy                = false
+    tags                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/codepipeline/Sandtongrid-Technologies-prod"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                    = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/codepipeline/Sandtongrid-Technologies-prod"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+}
+
+# module.cloudwatch.aws_cloudwatch_log_group.logs["s3"]:
+resource "aws_cloudwatch_log_group" "logs" {
+    arn                         = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/s3/www.sandtongridtech.com"
+    deletion_protection_enabled = false
+    id                          = "/aws/s3/www.sandtongridtech.com"
+    kms_key_id                  = null
+    log_group_class             = "STANDARD"
+    name                        = "/aws/s3/www.sandtongridtech.com"
+    name_prefix                 = null
+    region                      = "eu-west-1"
+    retention_in_days           = 7
+    skip_destroy                = false
+    tags                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/s3/www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                    = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "/aws/s3/www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+}
+# module.iam.data.aws_iam_policy_document.codebuild_assume_role:
+data "aws_iam_policy_document" "codebuild_assume_role" {
+    id            = "1229436035"
+    json          = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "sts:AssumeRole"
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "codebuild.amazonaws.com"
+                    }
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    minified_json = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "sts:AssumeRole"
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "codebuild.amazonaws.com"
+                    }
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    version       = "2012-10-17"
+
+    statement {
+        actions       = [
+            "sts:AssumeRole",
+        ]
+        effect        = "Allow"
+        not_actions   = []
+        not_resources = []
+        resources     = []
+        sid           = null
+
+        principals {
+            identifiers = [
+                "codebuild.amazonaws.com",
+            ]
+            type        = "Service"
+        }
+    }
+}
+
+# module.iam.data.aws_iam_policy_document.codepipeline_assume_role:
+data "aws_iam_policy_document" "codepipeline_assume_role" {
+    id            = "2245101310"
+    json          = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "sts:AssumeRole"
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "codepipeline.amazonaws.com"
+                    }
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    minified_json = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "sts:AssumeRole"
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "codepipeline.amazonaws.com"
+                    }
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    version       = "2012-10-17"
+
+    statement {
+        actions       = [
+            "sts:AssumeRole",
+        ]
+        effect        = "Allow"
+        not_actions   = []
+        not_resources = []
+        resources     = []
+        sid           = null
+
+        principals {
+            identifiers = [
+                "codepipeline.amazonaws.com",
+            ]
+            type        = "Service"
+        }
+    }
+}
+
+# module.iam.aws_iam_policy.codebuild:
+resource "aws_iam_policy" "codebuild" {
+    arn              = "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codebuild-policy"
+    attachment_count = 1
+    description      = "Least privilege policy for CodeBuild."
+    id               = "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codebuild-policy"
+    name             = "sandtongrid-technologies-prod-codebuild-policy"
+    name_prefix      = null
+    path             = "/"
+    policy           = jsonencode(
+        {
+            Statement = [
+                {
+                    Action   = [
+                        "logs:CreateLogGroup",
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents",
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                    Sid      = "CloudWatchLogs"
+                },
+                {
+                    Action   = [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:ListBucket",
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                    Sid      = "S3Artifacts"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    policy_id        = "ANPA3Y3THFNCMT2HJE7IU"
+    tags             = {}
+    tags_all         = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+}
+
+# module.iam.aws_iam_policy.codepipeline:
+resource "aws_iam_policy" "codepipeline" {
+    arn              = "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codepipeline-policy"
+    attachment_count = 1
+    description      = "Least privilege policy for CodePipeline."
+    id               = "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codepipeline-policy"
+    name             = "sandtongrid-technologies-prod-codepipeline-policy"
+    name_prefix      = null
+    path             = "/"
+    policy           = jsonencode(
+        {
+            Statement = [
+                {
+                    Action   = [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:ListBucket",
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                    Sid      = "PipelineArtifacts"
+                },
+                {
+                    Action   = [
+                        "codebuild:StartBuild",
+                        "codebuild:BatchGetBuilds",
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                    Sid      = "CodeBuild"
+                },
+                {
+                    Action   = [
+                        "cloudwatch:PutMetricData",
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                    Sid      = "CloudWatch"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    policy_id        = "ANPA3Y3THFNCGY75BXXQE"
+    tags             = {}
+    tags_all         = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+}
+
+# module.iam.aws_iam_role.codebuild:
+resource "aws_iam_role" "codebuild" {
+    arn                   = "arn:aws:iam::809306106692:role/sandtongrid-technologies-prod-codebuild-role"
+    assume_role_policy    = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "sts:AssumeRole"
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "codebuild.amazonaws.com"
+                    }
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    create_date           = "2026-08-03T04:39:26Z"
+    description           = null
+    force_detach_policies = false
+    id                    = "sandtongrid-technologies-prod-codebuild-role"
+    managed_policy_arns   = [
+        "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codebuild-policy",
+    ]
+    max_session_duration  = 3600
+    name                  = "sandtongrid-technologies-prod-codebuild-role"
+    name_prefix           = null
+    path                  = "/"
+    permissions_boundary  = null
+    tags                  = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "sandtongrid-technologies-prod-codebuild-role"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all              = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "sandtongrid-technologies-prod-codebuild-role"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    unique_id             = "AROA3Y3THFNCALMOYNKXB"
+}
+
+# module.iam.aws_iam_role.codepipeline:
+resource "aws_iam_role" "codepipeline" {
+    arn                   = "arn:aws:iam::809306106692:role/sandtongrid-technologies-prod-codepipeline-role"
+    assume_role_policy    = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "sts:AssumeRole"
+                    Effect    = "Allow"
+                    Principal = {
+                        Service = "codepipeline.amazonaws.com"
+                    }
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    create_date           = "2026-08-03T04:39:26Z"
+    description           = null
+    force_detach_policies = false
+    id                    = "sandtongrid-technologies-prod-codepipeline-role"
+    managed_policy_arns   = [
+        "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codepipeline-policy",
+    ]
+    max_session_duration  = 3600
+    name                  = "sandtongrid-technologies-prod-codepipeline-role"
+    name_prefix           = null
+    path                  = "/"
+    permissions_boundary  = null
+    tags                  = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "sandtongrid-technologies-prod-codepipeline-role"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all              = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "sandtongrid-technologies-prod-codepipeline-role"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    unique_id             = "AROA3Y3THFNCDTEOS24FQ"
+}
+
+# module.iam.aws_iam_role_policy_attachment.codebuild:
+resource "aws_iam_role_policy_attachment" "codebuild" {
+    id         = "sandtongrid-technologies-prod-codebuild-role/arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codebuild-policy"
+    policy_arn = "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codebuild-policy"
+    role       = "sandtongrid-technologies-prod-codebuild-role"
+}
+
+# module.iam.aws_iam_role_policy_attachment.codepipeline:
+resource "aws_iam_role_policy_attachment" "codepipeline" {
+    id         = "sandtongrid-technologies-prod-codepipeline-role/arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codepipeline-policy"
+    policy_arn = "arn:aws:iam::809306106692:policy/sandtongrid-technologies-prod-codepipeline-policy"
+    role       = "sandtongrid-technologies-prod-codepipeline-role"
+}
+# module.logging_bucket.aws_s3_bucket.logs:
+resource "aws_s3_bucket" "logs" {
+    acceleration_status         = null
+    arn                         = "arn:aws:s3:::logs.sandtongridtech.com"
+    bucket                      = "logs.sandtongridtech.com"
+    bucket_domain_name          = "logs.sandtongridtech.com.s3.amazonaws.com"
+    bucket_namespace            = "global"
+    bucket_prefix               = null
+    bucket_region               = "eu-west-1"
+    bucket_regional_domain_name = "logs.sandtongridtech.com.s3.eu-west-1.amazonaws.com"
+    force_destroy               = false
+    hosted_zone_id              = "Z1BKCTXD74EZPE"
+    id                          = "logs.sandtongridtech.com"
+    object_lock_enabled         = false
+    policy                      = null
+    region                      = "eu-west-1"
+    request_payer               = "BucketOwner"
+    tags                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "logs.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                    = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "logs.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+
+    grant {
+        id          = "0a8057cbe9299c062840fec51f7939d74877a6310f812044d9ff2c2a651d9b33"
+        permissions = [
+            "FULL_CONTROL",
+        ]
+        type        = "CanonicalUser"
+        uri         = null
+    }
+    grant {
+        id          = "c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0"
+        permissions = [
+            "FULL_CONTROL",
+        ]
+        type        = "CanonicalUser"
+        uri         = null
+    }
+
+    lifecycle_rule {
+        abort_incomplete_multipart_upload_days = 0
+        enabled                                = true
+        id                                     = "log-retention"
+        prefix                                 = null
+        tags                                   = {}
+
+        expiration {
+            date                         = null
+            days                         = 365
+            expired_object_delete_marker = false
+        }
+
+        transition {
+            date          = null
+            days          = 30
+            storage_class = "STANDARD_IA"
+        }
+        transition {
+            date          = null
+            days          = 90
+            storage_class = "GLACIER"
+        }
+    }
+
+    server_side_encryption_configuration {
+        rule {
+            bucket_key_enabled = false
+
+            apply_server_side_encryption_by_default {
+                kms_master_key_id = null
+                sse_algorithm     = "AES256"
+            }
+        }
+    }
+
+    versioning {
+        enabled    = true
+        mfa_delete = false
+    }
+}
+
+# module.logging_bucket.aws_s3_bucket_lifecycle_configuration.logs:
+resource "aws_s3_bucket_lifecycle_configuration" "logs" {
+    bucket                                 = "logs.sandtongridtech.com"
+    expected_bucket_owner                  = null
+    id                                     = "logs.sandtongridtech.com"
+    region                                 = "eu-west-1"
+    transition_default_minimum_object_size = "all_storage_classes_128K"
+
+    rule {
+        id     = "log-retention"
+        prefix = null
+        status = "Enabled"
+
+        expiration {
+            days                         = 365
+            expired_object_delete_marker = false
+        }
+
+        filter {
+            prefix = null
+        }
+
+        transition {
+            days          = 30
+            storage_class = "STANDARD_IA"
+        }
+        transition {
+            days          = 90
+            storage_class = "GLACIER"
+        }
+    }
+}
+
+# module.logging_bucket.aws_s3_bucket_ownership_controls.logs:
+resource "aws_s3_bucket_ownership_controls" "logs" {
+    bucket = "logs.sandtongridtech.com"
+    id     = "logs.sandtongridtech.com"
+    region = "eu-west-1"
+
+    rule {
+        object_ownership = "BucketOwnerPreferred"
+    }
+}
+
+# module.logging_bucket.aws_s3_bucket_public_access_block.logs:
+resource "aws_s3_bucket_public_access_block" "logs" {
+    block_public_acls       = true
+    block_public_policy     = true
+    bucket                  = "logs.sandtongridtech.com"
+    id                      = "logs.sandtongridtech.com"
+    ignore_public_acls      = true
+    region                  = "eu-west-1"
+    restrict_public_buckets = true
+}
+
+# module.logging_bucket.aws_s3_bucket_server_side_encryption_configuration.logs:
+resource "aws_s3_bucket_server_side_encryption_configuration" "logs" {
+    bucket                = "logs.sandtongridtech.com"
+    expected_bucket_owner = null
+    id                    = "logs.sandtongridtech.com"
+    region                = "eu-west-1"
+
+    rule {
+        blocked_encryption_types = [
+            "SSE-C",
+        ]
+        bucket_key_enabled       = false
+
+        apply_server_side_encryption_by_default {
+            kms_master_key_id = null
+            sse_algorithm     = "AES256"
+        }
+    }
+}
+
+# module.logging_bucket.aws_s3_bucket_versioning.logs:
+resource "aws_s3_bucket_versioning" "logs" {
+    bucket                = "logs.sandtongridtech.com"
+    expected_bucket_owner = null
+    id                    = "logs.sandtongridtech.com"
+    region                = "eu-west-1"
+
+    versioning_configuration {
+        mfa_delete = "Disabled"
+        status     = "Enabled"
+    }
+}
+# module.route53.aws_route53_record.website:
+resource "aws_route53_record" "website" {
+    fqdn                             = "www.sandtongridtech.com"
+    health_check_id                  = null
+    id                               = "Z05297659GA8N75266FV_www.sandtongridtech.com_A"
+    multivalue_answer_routing_policy = false
+    name                             = "www.sandtongridtech.com"
+    set_identifier                   = null
+    ttl                              = 0
+    type                             = "A"
+    zone_id                          = "Z05297659GA8N75266FV"
+
+    alias {
+        evaluate_target_health = false
+        name                   = "dtondcu2h22w9.cloudfront.net"
+        zone_id                = "Z2FDTNDATAQYW2"
+    }
+}
+# module.website_bucket.aws_s3_bucket.website:
+resource "aws_s3_bucket" "website" {
+    acceleration_status         = null
+    arn                         = "arn:aws:s3:::www.sandtongridtech.com"
+    bucket                      = "www.sandtongridtech.com"
+    bucket_domain_name          = "www.sandtongridtech.com.s3.amazonaws.com"
+    bucket_namespace            = "global"
+    bucket_prefix               = null
+    bucket_region               = "eu-west-1"
+    bucket_regional_domain_name = "www.sandtongridtech.com.s3.eu-west-1.amazonaws.com"
+    force_destroy               = false
+    hosted_zone_id              = "Z1BKCTXD74EZPE"
+    id                          = "www.sandtongridtech.com"
+    object_lock_enabled         = false
+    policy                      = null
+    region                      = "eu-west-1"
+    request_payer               = "BucketOwner"
+    tags                        = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+    tags_all                    = {
+        "Environment" = "prod"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "www.sandtongridtech.com"
+        "Owner"       = "Wadondera"
+        "Project"     = "Sandtongrid Technologies"
+        "Repository"  = "sandtongrid-technologies"
+    }
+
+    grant {
+        id          = "0a8057cbe9299c062840fec51f7939d74877a6310f812044d9ff2c2a651d9b33"
+        permissions = [
+            "FULL_CONTROL",
+        ]
+        type        = "CanonicalUser"
+        uri         = null
+    }
+
+    server_side_encryption_configuration {
+        rule {
+            bucket_key_enabled = false
+
+            apply_server_side_encryption_by_default {
+                kms_master_key_id = null
+                sse_algorithm     = "AES256"
+            }
+        }
+    }
+
+    versioning {
+        enabled    = true
+        mfa_delete = false
+    }
+}
+
+# module.website_bucket.aws_s3_bucket_ownership_controls.website:
+resource "aws_s3_bucket_ownership_controls" "website" {
+    bucket = "www.sandtongridtech.com"
+    id     = "www.sandtongridtech.com"
+    region = "eu-west-1"
+
+    rule {
+        object_ownership = "BucketOwnerEnforced"
+    }
+}
+
+# module.website_bucket.aws_s3_bucket_public_access_block.website:
+resource "aws_s3_bucket_public_access_block" "website" {
+    block_public_acls       = true
+    block_public_policy     = true
+    bucket                  = "www.sandtongridtech.com"
+    id                      = "www.sandtongridtech.com"
+    ignore_public_acls      = true
+    region                  = "eu-west-1"
+    restrict_public_buckets = true
+}
+
+# module.website_bucket.aws_s3_bucket_server_side_encryption_configuration.website:
+resource "aws_s3_bucket_server_side_encryption_configuration" "website" {
+    bucket                = "www.sandtongridtech.com"
+    expected_bucket_owner = null
+    id                    = "www.sandtongridtech.com"
+    region                = "eu-west-1"
+
+    rule {
+        blocked_encryption_types = [
+            "SSE-C",
+        ]
+        bucket_key_enabled       = false
+
+        apply_server_side_encryption_by_default {
+            kms_master_key_id = null
+            sse_algorithm     = "AES256"
+        }
+    }
+}
+
+# module.website_bucket.aws_s3_bucket_versioning.website:
+resource "aws_s3_bucket_versioning" "website" {
+    bucket                = "www.sandtongridtech.com"
+    expected_bucket_owner = null
+    id                    = "www.sandtongridtech.com"
+    region                = "eu-west-1"
+
+    versioning_configuration {
+        mfa_delete = "Disabled"
+        status     = "Enabled"
+    }
+}
+
+
+Outputs:
+
+cloudwatch_log_group_arns = {
+    cloudfront   = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/cloudfront/www.sandtongridtech.com"
+    codebuild    = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/codebuild/Sandtongrid-Technologies-prod"
+    codepipeline = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/codepipeline/Sandtongrid-Technologies-prod"
+    s3           = "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/s3/www.sandtongridtech.com"
+}
+cloudwatch_log_groups = {
+    cloudfront   = "/aws/cloudfront/www.sandtongridtech.com"
+    codebuild    = "/aws/codebuild/Sandtongrid-Technologies-prod"
+    codepipeline = "/aws/codepipeline/Sandtongrid-Technologies-prod"
+    s3           = "/aws/s3/www.sandtongridtech.com"
+}
+codebuild_role_arn = "arn:aws:iam::809306106692:role/sandtongrid-technologies-prod-codebuild-role"
+codebuild_role_name = "sandtongrid-technologies-prod-codebuild-role"
+codepipeline_role_arn = "arn:aws:iam::809306106692:role/sandtongrid-technologies-prod-codepipeline-role"
+codepipeline_role_name = "sandtongrid-technologies-prod-codepipeline-role"
+logging_bucket_arn = "arn:aws:s3:::logs.sandtongridtech.com"
+logging_bucket_domain_name = "logs.sandtongridtech.com.s3.amazonaws.com"
+logging_bucket_id = "logs.sandtongridtech.com"
+logging_bucket_regional_domain_name = "logs.sandtongridtech.com.s3.eu-west-1.amazonaws.com"
+website_bucket_arn = "arn:aws:s3:::www.sandtongridtech.com"
+website_bucket_id = "www.sandtongridtech.com"
+website_bucket_regional_domain_name = "www.sandtongridtech.com.s3.eu-west-1.amazonaws.com"

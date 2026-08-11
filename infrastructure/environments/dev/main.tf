@@ -38,17 +38,6 @@ module "logging_bucket" {
 # IAM
 ###############################################################################
 
-module "iam" {
-
-  source = "../../modules/iam"
-
-  project_name = var.project_name
-
-  environment = var.environment
-
-  common_tags = local.common_tags
-
-}
 
 ###############################################################################
 # CloudWatch
@@ -77,9 +66,7 @@ module "acm" {
   source = "../../modules/acm"
 
   providers = {
-
     aws.us_east_1 = aws.us_east_1
-
   }
 
   domain_name = var.domain_name
@@ -93,6 +80,11 @@ module "acm" {
   common_tags = local.common_tags
 
 }
+
+###############################################################################
+# CodeStar Connection
+###############################################################################
+
 
 ###############################################################################
 # CloudFront
@@ -119,14 +111,29 @@ module "cloudfront" {
 }
 
 ###############################################################################
+# CodeBuild
+###############################################################################
+
+
+###############################################################################
+# CodePipeline
+###############################################################################
+
+
+###############################################################################
 # Route53
 ###############################################################################
 
 module "route53" {
+
   source = "../../modules/route53"
 
-  hosted_zone_id            = var.hosted_zone_id
-  domain_name               = var.domain_name
-  cloudfront_domain_name    = module.cloudfront.domain_name
+  hosted_zone_id = var.hosted_zone_id
+
+  domain_name = var.domain_name
+
+  cloudfront_domain_name = module.cloudfront.domain_name
+
   cloudfront_hosted_zone_id = module.cloudfront.hosted_zone_id
+
 }

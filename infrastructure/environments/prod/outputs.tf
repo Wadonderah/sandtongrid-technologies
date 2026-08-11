@@ -58,53 +58,8 @@ output "cloudwatch_log_group_arns" {
 
 }
 
-###############################################################################
-# CodeBuild Role Name
-###############################################################################
 
-output "codebuild_role_name" {
 
-  description = "CodeBuild IAM role name."
-
-  value = module.iam.codebuild_role_name
-
-}
-
-###############################################################################
-# CodeBuild Role ARN
-###############################################################################
-
-output "codebuild_role_arn" {
-
-  description = "CodeBuild IAM role ARN."
-
-  value = module.iam.codebuild_role_arn
-
-}
-
-###############################################################################
-# CodePipeline Role Name
-###############################################################################
-
-output "codepipeline_role_name" {
-
-  description = "CodePipeline IAM role name."
-
-  value = module.iam.codepipeline_role_name
-
-}
-
-###############################################################################
-# CodePipeline Role ARN
-###############################################################################
-
-output "codepipeline_role_arn" {
-
-  description = "CodePipeline IAM role ARN."
-
-  value = module.iam.codepipeline_role_arn
-
-}
 
 ###############################################################################
 # Logging Bucket
