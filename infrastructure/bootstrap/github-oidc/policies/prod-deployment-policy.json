@@ -1,0 +1,133 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "S3WebsiteAndLogging",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketVersioning",
+                "s3:PutBucketVersioning",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:PutBucketPublicAccessBlock",
+                "s3:GetBucketOwnershipControls",
+                "s3:PutBucketOwnershipControls",
+                "s3:GetEncryptionConfiguration",
+                "s3:PutEncryptionConfiguration",
+                "s3:GetLifecycleConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:ListBucket",
+                "s3:GetBucketPolicy",
+                "s3:PutBucketPolicy",
+                "s3:DeleteBucketPolicy"
+            ],
+            "Resource": [
+                "arn:aws:s3:::www.sandtongridtech.com",
+                "arn:aws:s3:::logs.sandtongridtech.com"
+            ]
+        },
+        {
+            "Sid": "S3ObjectManagement",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:GetObjectVersion",
+                "s3:DeleteObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::www.sandtongridtech.com/*",
+                "arn:aws:s3:::logs.sandtongridtech.com/*"
+            ]
+        },
+        {
+            "Sid": "CloudFrontManagement",
+            "Effect": "Allow",
+            "Action": [
+                "cloudfront:GetDistribution",
+                "cloudfront:ListDistributions",
+                "cloudfront:CreateDistribution",
+                "cloudfront:UpdateDistribution",
+                "cloudfront:DeleteDistribution",
+                "cloudfront:GetDistributionConfig",
+                "cloudfront:GetOriginAccessControl",
+                "cloudfront:ListOriginAccessControls",
+                "cloudfront:CreateOriginAccessControl",
+                "cloudfront:UpdateOriginAccessControl",
+                "cloudfront:DeleteOriginAccessControl"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ACMCertificateManagement",
+            "Effect": "Allow",
+            "Action": [
+                "acm:DescribeCertificate",
+                "acm:ListCertificates",
+                "acm:RequestCertificate",
+                "acm:DeleteCertificate",
+                "acm:AddTagsToCertificate",
+                "acm:RemoveTagsFromCertificate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Route53Management",
+            "Effect": "Allow",
+            "Action": [
+                "route53:GetHostedZone",
+                "route53:ListResourceRecordSets",
+                "route53:ChangeResourceRecordSets"
+            ],
+            "Resource": "arn:aws:route53:::hostedzone/Z05297659GA8N75266FV"
+        },
+        {
+            "Sid": "CloudWatchLogsManagement",
+            "Effect": "Allow",
+            "Action": [
+                "logs:DescribeLogGroups",
+                "logs:CreateLogGroup",
+                "logs:PutRetentionPolicy",
+                "logs:DeleteLogGroup",
+                "logs:ListTagsForResource",
+                "logs:TagResource",
+                "logs:UntagResource"
+            ],
+            "Resource": [
+                "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/cloudfront/www.sandtongridtech.com",
+                "arn:aws:logs:eu-west-1:809306106692:log-group:/aws/s3/www.sandtongridtech.com"
+            ]
+        },
+        {
+            "Sid": "TerraformBackendState",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws:s3:::sandtongrid-tech-terraform-state/prod/terraform.tfstate"
+        },
+        {
+            "Sid": "TerraformBackendBucket",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketVersioning",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::sandtongrid-tech-terraform-state"
+        },
+        {
+            "Sid": "TerraformStateLock",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem"
+            ],
+            "Resource": "arn:aws:dynamodb:eu-west-1:809306106692:table/sandtongrid-tech-terraform-locks"
+        }
+    ]
+}

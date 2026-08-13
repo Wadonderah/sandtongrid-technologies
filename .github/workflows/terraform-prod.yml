@@ -1,0 +1,105 @@
+###############################################################################
+# Terraform Production CI
+# -----------------------------------------------------------------------------
+# Purpose:
+# Validate and plan the production infrastructure using GitHub Actions OIDC.
+#
+# AWS credentials are never stored in GitHub.
+# GitHub assumes the dedicated production IAM role using OIDC.
+###############################################################################
+
+name: Terraform Production
+
+on:
+  pull_request:
+    paths:
+      - "infrastructure/**"
+      - ".github/workflows/terraform-prod.yml"
+
+  push:
+    branches:
+      - main
+    paths:
+      - "infrastructure/**"
+      - ".github/workflows/terraform-prod.yml"
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  TF_WORKING_DIR: infrastructure/environments/prod
+  AWS_REGION: eu-west-1
+  AWS_ROLE_ARN: arn:aws:iam::809306106692:role/sandtongrid-github-actions-prod
+
+jobs:
+
+  terraform-plan:
+
+    name: Terraform Production Plan
+    runs-on: ubuntu-latest
+
+    steps:
+
+      #########################################################################
+      # Checkout Repository
+      #########################################################################
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      #########################################################################
+      # Setup Terraform
+      #########################################################################
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      #########################################################################
+      # Configure AWS Through GitHub OIDC
+      #########################################################################
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      #########################################################################
+      # Verify AWS Identity
+      #########################################################################
+
+      - name: Verify AWS Identity
+        run: aws sts get-caller-identity
+
+      #########################################################################
+      # Terraform Format Check
+      #########################################################################
+
+      - name: Terraform Format Check
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform fmt -check -recursive
+
+      #########################################################################
+      # Terraform Initialization
+      #########################################################################
+
+      - name: Terraform Init
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform init -input=false
+
+      #########################################################################
+      # Terraform Validation
+      #########################################################################
+
+      - name: Terraform Validate
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform validate
+
+      #########################################################################
+      # Terraform Plan
+      #########################################################################
+
+      - name: Terraform Plan
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform plan -input=false

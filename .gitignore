@@ -207,3 +207,7 @@ secrets/
 key.pem
 *.p12
 *.pfx
+
+# Track Terraform IAM policy documents
+!infrastructure/bootstrap/github-oidc/policies/
+!infrastructure/bootstrap/github-oidc/policies/prod-deployment-policy.json
