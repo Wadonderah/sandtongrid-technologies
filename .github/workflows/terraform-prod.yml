@@ -4,39 +4,81 @@
 # Purpose:
 # Validate and plan the production infrastructure using GitHub Actions OIDC.
 #
+# This workflow runs only after changes are pushed to the main branch.
+#
 # AWS credentials are never stored in GitHub.
-# GitHub assumes the dedicated production IAM role using OIDC.
+# GitHub Actions receives a short-lived OIDC token and assumes the dedicated
+# production IAM role.
+#
+# IMPORTANT:
+# The IAM trust policy intentionally allows only:
+#
+# repo:Wadonderah/sandtongrid-technologies:ref:refs/heads/main
+#
+# Therefore this production workflow must NOT run on pull_request events.
 ###############################################################################
 
 name: Terraform Production
 
+###############################################################################
+# Workflow Trigger
+# -----------------------------------------------------------------------------
+# Production infrastructure validation runs after infrastructure changes
+# reach the main branch.
+#
+# Pull-request execution is intentionally excluded because the production
+# IAM role is restricted to the main branch OIDC subject.
+###############################################################################
+
 on:
-  pull_request:
+  push:
+    branches:
+      - main
+
     paths:
       - "infrastructure/**"
       - ".github/workflows/terraform-prod.yml"
 
-  push:
-    branches:
-      - main
-    paths:
-      - "infrastructure/**"
-      - ".github/workflows/terraform-prod.yml"
+###############################################################################
+# GitHub Actions Permissions
+# -----------------------------------------------------------------------------
+# contents:
+#   Allows the workflow to check out the repository.
+#
+# id-token:
+#   Allows GitHub Actions to request an OIDC token for AWS authentication.
+#
+# No long-lived AWS access keys are required.
+###############################################################################
 
 permissions:
   contents: read
   id-token: write
 
+###############################################################################
+# Environment Configuration
+###############################################################################
+
 env:
+  # Terraform production root module.
   TF_WORKING_DIR: infrastructure/environments/prod
+
+  # AWS region used by the production infrastructure.
   AWS_REGION: eu-west-1
+
+  # Dedicated IAM role used by GitHub Actions for production Terraform.
   AWS_ROLE_ARN: arn:aws:iam::809306106692:role/sandtongrid-github-actions-prod
+
+###############################################################################
+# Terraform Production Job
+###############################################################################
 
 jobs:
 
   terraform-plan:
 
     name: Terraform Production Plan
+
     runs-on: ubuntu-latest
 
     steps:
@@ -57,6 +99,9 @@ jobs:
 
       #########################################################################
       # Configure AWS Through GitHub OIDC
+      #
+      # GitHub exchanges the workflow OIDC token for temporary AWS credentials.
+      # No AWS access key or secret key is stored in GitHub.
       #########################################################################
 
       - name: Configure AWS Credentials
@@ -67,6 +112,8 @@ jobs:
 
       #########################################################################
       # Verify AWS Identity
+      #
+      # Confirms that GitHub successfully assumed the intended production role.
       #########################################################################
 
       - name: Verify AWS Identity
@@ -74,6 +121,8 @@ jobs:
 
       #########################################################################
       # Terraform Format Check
+      #
+      # Ensures Terraform files follow the repository formatting standard.
       #########################################################################
 
       - name: Terraform Format Check
@@ -82,6 +131,8 @@ jobs:
 
       #########################################################################
       # Terraform Initialization
+      #
+      # Initializes the production Terraform configuration and backend.
       #########################################################################
 
       - name: Terraform Init
@@ -90,6 +141,9 @@ jobs:
 
       #########################################################################
       # Terraform Validation
+      #
+      # Verifies that the production Terraform configuration is syntactically
+      # valid and internally consistent.
       #########################################################################
 
       - name: Terraform Validate
@@ -98,6 +152,9 @@ jobs:
 
       #########################################################################
       # Terraform Plan
+      #
+      # Compares the production configuration with the actual AWS infrastructure
+      # and reports any changes that Terraform would make.
       #########################################################################
 
       - name: Terraform Plan
