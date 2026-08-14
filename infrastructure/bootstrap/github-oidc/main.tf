@@ -1,11 +1,8 @@
 ###############################################################################
 # GitHub Actions OIDC Provider
 # -----------------------------------------------------------------------------
-# The GitHub OIDC provider already exists in this AWS account and is managed
-# by this bootstrap configuration.
-#
-# The provider is account-level infrastructure, so existing metadata such as
-# thumbprints and tags are intentionally protected from unnecessary changes.
+# Account-level OIDC provider used by both pull-request and production
+# GitHub Actions workflows.
 ###############################################################################
 
 resource "aws_iam_openid_connect_provider" "github" {
@@ -25,17 +22,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 }
 
 ###############################################################################
-# Production Repository Identity
-# -----------------------------------------------------------------------------
-# This value is intentionally defined as a local constant instead of a
-# Terraform variable.
-#
-# GitHub's OIDC "sub" claim for a workflow running from the main branch is:
-#
-# repo:OWNER/REPOSITORY:ref:refs/heads/main
-#
-# Keeping the repository identity here prevents external Terraform variables
-# from accidentally changing the production trust relationship.
+# GitHub Repository Identity
 ###############################################################################
 
 locals {
@@ -43,15 +30,12 @@ locals {
 }
 
 ###############################################################################
-# GitHub Actions Production Trust Policy
+# Production GitHub Actions Trust Policy
 # -----------------------------------------------------------------------------
-# Only GitHub Actions running from the main branch of the Sandtongrid
-# Technologies repository are allowed to assume the production role.
-#
-# No long-lived AWS credentials are required by GitHub Actions.
+# Only pushes from the main branch can assume the production role.
 ###############################################################################
 
-data "aws_iam_policy_document" "github_oidc_assume_role" {
+data "aws_iam_policy_document" "github_oidc_prod_assume_role" {
   statement {
     effect = "Allow"
 
@@ -67,12 +51,7 @@ data "aws_iam_policy_document" "github_oidc_assume_role" {
       ]
     }
 
-    ###########################################################################
-    # OIDC Audience Restriction
-    # -------------------------------------------------------------------------
-    # The GitHub OIDC token must be intended for AWS STS.
-    ###########################################################################
-
+    # GitHub token must be intended for AWS STS.
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:aud"
@@ -82,12 +61,7 @@ data "aws_iam_policy_document" "github_oidc_assume_role" {
       ]
     }
 
-    ###########################################################################
-    # Repository and Branch Restriction
-    # -------------------------------------------------------------------------
-    # Only the main branch of the production repository can assume this role.
-    ###########################################################################
-
+    # Production access is restricted to the main branch.
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
@@ -100,21 +74,77 @@ data "aws_iam_policy_document" "github_oidc_assume_role" {
 }
 
 ###############################################################################
+# Pull Request GitHub Actions Trust Policy
+# -----------------------------------------------------------------------------
+# Pull-request workflows use a different GitHub OIDC subject.
+###############################################################################
+
+data "aws_iam_policy_document" "github_oidc_pr_assume_role" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "sts:AssumeRoleWithWebIdentity"
+    ]
+
+    principals {
+      type = "Federated"
+
+      identifiers = [
+        aws_iam_openid_connect_provider.github.arn
+      ]
+    }
+
+    # GitHub token must be intended for AWS STS.
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:aud"
+
+      values = [
+        "sts.amazonaws.com"
+      ]
+    }
+
+    # Only pull-request workflows from this repository are trusted.
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:sub"
+
+      values = [
+        "repo:${local.github_repository}:pull_request"
+      ]
+    }
+  }
+}
+
+###############################################################################
 # Production Deployment Role
 # -----------------------------------------------------------------------------
-# Dedicated IAM role used by GitHub Actions to manage the production
-# infrastructure through Terraform.
-#
-# GitHub obtains temporary AWS credentials by assuming this role through
-# GitHub's OIDC identity provider.
+# This role remains restricted to the main branch.
 ###############################################################################
 
 resource "aws_iam_role" "github_actions_prod" {
   name = "sandtongrid-github-actions-prod"
 
-  assume_role_policy = data.aws_iam_policy_document.github_oidc_assume_role.json
+  assume_role_policy = data.aws_iam_policy_document.github_oidc_prod_assume_role.json
 
   tags = {
     Name = "sandtongrid-github-actions-prod"
+  }
+}
+
+###############################################################################
+# Pull Request Planning Role
+# -----------------------------------------------------------------------------
+# Separate role for pull-request Terraform plans.
+###############################################################################
+
+resource "aws_iam_role" "github_actions_pr" {
+  name = "sandtongrid-github-actions-pr"
+
+  assume_role_policy = data.aws_iam_policy_document.github_oidc_pr_assume_role.json
+
+  tags = {
+    Name = "sandtongrid-github-actions-pr"
   }
 }
