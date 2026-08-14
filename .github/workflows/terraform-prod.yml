@@ -4,81 +4,43 @@
 # Purpose:
 # Validate and plan the production infrastructure using GitHub Actions OIDC.
 #
-# This workflow runs only after changes are pushed to the main branch.
-#
 # AWS credentials are never stored in GitHub.
-# GitHub Actions receives a short-lived OIDC token and assumes the dedicated
-# production IAM role.
+# GitHub assumes the dedicated production IAM role using OIDC.
 #
-# IMPORTANT:
-# The IAM trust policy intentionally allows only:
-#
-# repo:Wadonderah/sandtongrid-technologies:ref:refs/heads/main
-#
-# Therefore this production workflow must NOT run on pull_request events.
+# Production Terraform input values are supplied through GitHub Actions
+# repository variables because terraform.tfvars is intentionally excluded
+# from version control.
 ###############################################################################
 
 name: Terraform Production
 
-###############################################################################
-# Workflow Trigger
-# -----------------------------------------------------------------------------
-# Production infrastructure validation runs after infrastructure changes
-# reach the main branch.
-#
-# Pull-request execution is intentionally excluded because the production
-# IAM role is restricted to the main branch OIDC subject.
-###############################################################################
-
 on:
-  push:
-    branches:
-      - main
-
+  pull_request:
     paths:
       - "infrastructure/**"
       - ".github/workflows/terraform-prod.yml"
 
-###############################################################################
-# GitHub Actions Permissions
-# -----------------------------------------------------------------------------
-# contents:
-#   Allows the workflow to check out the repository.
-#
-# id-token:
-#   Allows GitHub Actions to request an OIDC token for AWS authentication.
-#
-# No long-lived AWS access keys are required.
-###############################################################################
+  push:
+    branches:
+      - main
+    paths:
+      - "infrastructure/**"
+      - ".github/workflows/terraform-prod.yml"
 
 permissions:
   contents: read
   id-token: write
 
-###############################################################################
-# Environment Configuration
-###############################################################################
-
 env:
-  # Terraform production root module.
   TF_WORKING_DIR: infrastructure/environments/prod
-
-  # AWS region used by the production infrastructure.
   AWS_REGION: eu-west-1
-
-  # Dedicated IAM role used by GitHub Actions for production Terraform.
   AWS_ROLE_ARN: arn:aws:iam::809306106692:role/sandtongrid-github-actions-prod
-
-###############################################################################
-# Terraform Production Job
-###############################################################################
 
 jobs:
 
   terraform-plan:
 
     name: Terraform Production Plan
-
     runs-on: ubuntu-latest
 
     steps:
@@ -99,9 +61,9 @@ jobs:
 
       #########################################################################
       # Configure AWS Through GitHub OIDC
-      #
-      # GitHub exchanges the workflow OIDC token for temporary AWS credentials.
-      # No AWS access key or secret key is stored in GitHub.
+      #########################################################################
+      # GitHub obtains temporary AWS credentials by assuming the dedicated
+      # production IAM role through the configured OIDC trust relationship.
       #########################################################################
 
       - name: Configure AWS Credentials
@@ -112,17 +74,60 @@ jobs:
 
       #########################################################################
       # Verify AWS Identity
-      #
-      # Confirms that GitHub successfully assumed the intended production role.
       #########################################################################
 
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
 
       #########################################################################
-      # Terraform Format Check
+      # Create CI Terraform Variables
+      #########################################################################
+      # terraform.tfvars is intentionally ignored by Git.
       #
-      # Ensures Terraform files follow the repository formatting standard.
+      # GitHub Actions therefore creates a temporary CI-specific variables
+      # file from repository variables during the workflow run.
+      #
+      # The file exists only inside the GitHub runner and is never committed.
+      #########################################################################
+
+      - name: Create Production Terraform Variables
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        env:
+          TF_WEBSITE_BUCKET_NAME: ${{ vars.TF_WEBSITE_BUCKET_NAME }}
+          TF_LOGGING_BUCKET_NAME: ${{ vars.TF_LOGGING_BUCKET_NAME }}
+          TF_DOMAIN_NAME: ${{ vars.TF_DOMAIN_NAME }}
+          TF_SUBJECT_ALTERNATIVE_NAMES: ${{ vars.TF_SUBJECT_ALTERNATIVE_NAMES }}
+          TF_HOSTED_ZONE_ID: ${{ vars.TF_HOSTED_ZONE_ID }}
+        run: |
+          cat > ci.tfvars <<EOF
+          ###############################################################################
+          # Production CI Terraform Variables
+          # -----------------------------------------------------------------------------
+          # This file is generated during the GitHub Actions run.
+          # It is intentionally not committed to the repository.
+          ###############################################################################
+
+          aws_region = "${AWS_REGION}"
+
+          project_name = "Sandtongrid Technologies"
+
+          environment = "prod"
+
+          website_bucket_name = "${TF_WEBSITE_BUCKET_NAME}"
+
+          logging_bucket_name = "${TF_LOGGING_BUCKET_NAME}"
+
+          domain_name = "${TF_DOMAIN_NAME}"
+
+          subject_alternative_names = [
+            "${TF_SUBJECT_ALTERNATIVE_NAMES}"
+          ]
+
+          hosted_zone_id = "${TF_HOSTED_ZONE_ID}"
+          EOF
+
+      #########################################################################
+      # Terraform Format Check
       #########################################################################
 
       - name: Terraform Format Check
@@ -131,8 +136,6 @@ jobs:
 
       #########################################################################
       # Terraform Initialization
-      #
-      # Initializes the production Terraform configuration and backend.
       #########################################################################
 
       - name: Terraform Init
@@ -141,9 +144,6 @@ jobs:
 
       #########################################################################
       # Terraform Validation
-      #
-      # Verifies that the production Terraform configuration is syntactically
-      # valid and internally consistent.
       #########################################################################
 
       - name: Terraform Validate
@@ -152,11 +152,11 @@ jobs:
 
       #########################################################################
       # Terraform Plan
-      #
-      # Compares the production configuration with the actual AWS infrastructure
-      # and reports any changes that Terraform would make.
+      #########################################################################
+      # Explicitly use the CI-generated variable file because the normal
+      # terraform.tfvars file is intentionally not stored in Git.
       #########################################################################
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform plan -input=false
+        run: terraform plan -input=false -var-file=ci.tfvars
