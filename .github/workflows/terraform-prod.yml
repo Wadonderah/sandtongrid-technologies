@@ -35,7 +35,7 @@ permissions:
 env:
   TF_WORKING_DIR: infrastructure/environments/prod
   AWS_REGION: eu-west-1
-  AWS_ROLE_ARN: arn:aws:iam::809306106692:role/sandtongrid-github-actions-prod
+  AWS_ROLE_ARN: arn:aws:iam::809306106692:role/sandtongrid-github-actions-pr
 
 jobs:
 
