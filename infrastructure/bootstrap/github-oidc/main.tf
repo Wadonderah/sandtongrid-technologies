@@ -26,7 +26,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 ###############################################################################
 
 locals {
-  github_repository = "wadonderah/sandtongrid-technologies"
+  github_repository = "Wadonderah/sandtongrid-technologies"
 }
 
 ###############################################################################
