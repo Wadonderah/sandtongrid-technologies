@@ -65,6 +65,8 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::809306106692:role/sandtongrid-github-actions-pr
           aws-region: ${{ env.AWS_REGION }}
+          role-session-name: github-actions-pr
+          retry-max-attempts: 3
 
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
@@ -117,6 +119,8 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::809306106692:role/sandtongrid-github-actions-prod
           aws-region: ${{ env.AWS_REGION }}
+          role-session-name: github-actions-prod
+          retry-max-attempts: 3
 
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
