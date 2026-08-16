@@ -52,6 +52,7 @@
         "cloudfront:UpdateDistribution",
         "cloudfront:DeleteDistribution",
         "cloudfront:GetDistributionConfig",
+        "cloudfront:CreateInvalidation",
         "cloudfront:GetOriginAccessControl",
         "cloudfront:ListOriginAccessControls",
         "cloudfront:CreateOriginAccessControl",
