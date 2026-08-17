@@ -74,6 +74,9 @@ jobs:
           retry-max-attempts: 3
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
+      - name: Terraform Format Check
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform fmt -check -recursive
       - name: Create Production Terraform Variables
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
@@ -100,9 +103,6 @@ jobs:
           ]
           hosted_zone_id = "${TF_HOSTED_ZONE_ID}"
           TFVARS
-      - name: Terraform Format Check
-        working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform fmt -check -recursive
       - name: Terraform Init
         working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform init -input=false
