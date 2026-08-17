@@ -16,6 +16,10 @@ env:
   TF_WORKING_DIR: infrastructure/environments/prod
   AWS_REGION: eu-west-1
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
 
   terraform-check:
