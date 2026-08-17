@@ -118,14 +118,15 @@
         "s3:DeleteObject",
         "s3:GetObjectVersion"
       ],
-      "Resource": "arn:aws:s3:::sandtongrid-tech-terraform-state/prod/terraform.tfstate"
+      "Resource": "arn:aws:s3:::sandtongrid-tech-terraform-state/prod/terraform.tfstate*"
     },
     {
       "Sid": "TerraformBackendBucket",
       "Effect": "Allow",
       "Action": [
         "s3:GetBucketVersioning",
-        "s3:GetBucketLocation"
+        "s3:GetBucketLocation",
+        "s3:ListBucket"
       ],
       "Resource": "arn:aws:s3:::sandtongrid-tech-terraform-state"
     },
