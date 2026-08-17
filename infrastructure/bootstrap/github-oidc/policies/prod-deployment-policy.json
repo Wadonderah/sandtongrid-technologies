@@ -20,7 +20,15 @@
         "s3:ListBucket",
         "s3:GetBucketPolicy",
         "s3:PutBucketPolicy",
-        "s3:DeleteBucketPolicy"
+        "s3:DeleteBucketPolicy",
+        "s3:GetBucketCORS",
+        "s3:GetBucketWebsite",
+        "s3:GetBucketRequestPayment",
+        "s3:GetBucketTagging",
+        "s3:GetBucketLogging",
+        "s3:GetBucketObjectLockConfiguration",
+        "s3:GetBucketReplication",
+        "s3:GetBucketNotification"
       ],
       "Resource": [
         "arn:aws:s3:::www.sandtongridtech.com",
