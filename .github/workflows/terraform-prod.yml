@@ -10,6 +10,7 @@
 #   - Run Terraform format, init, validate and plan.
 #
 # No long-lived AWS credentials are stored in GitHub.
+# Updated: workflow permissions fixed - id-token write enabled.
 ###############################################################################
 
 name: Terraform Production
