@@ -23,9 +23,7 @@ env:
   IMAGE_NAME: sandtongrid-website
 
 jobs:
-
   docker-build:
-
     name: Build Docker Image
 
     runs-on: ubuntu-latest
@@ -34,7 +32,6 @@ jobs:
       contents: read
 
     steps:
-
       #########################################################################
       # Checkout Repository
       #########################################################################
@@ -92,6 +89,27 @@ jobs:
 
         run: |
           curl --fail http://localhost:8080
+
+      #########################################################################
+      # Website Checks
+      #########################################################################
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/website/package-lock.json
+
+      - name: Lint Website
+        working-directory: apps/website
+        run: |
+          npm ci
+          npm run lint
+
+      - name: Build Website
+        working-directory: apps/website
+        run: npm run build
 
       #########################################################################
       # Cleanup

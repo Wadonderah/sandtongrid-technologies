@@ -1,0 +1,36 @@
+###############################################################################
+# Docker Compose development override
+# -----------------------------------------------------------------------------
+# Purpose:
+# Run the Vite development server with hot reload inside Docker.
+#
+# Run from:
+#   sandtongrid-technologies/
+#
+# Commands:
+#   docker compose -f docker/docker-compose.dev.yml up
+#   docker compose -f docker/docker-compose.dev.yml down
+###############################################################################
+
+services:
+  website-dev:
+    container_name: sandtongrid-website-dev
+
+    image: node:22-alpine
+
+    working_dir: /app
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ../apps/website:/app
+      - website-dev-node-modules:/app/node_modules
+
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+
+volumes:
+  website-dev-node-modules:
