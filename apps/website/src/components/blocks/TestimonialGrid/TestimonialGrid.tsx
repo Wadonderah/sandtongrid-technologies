@@ -18,13 +18,13 @@ const TESTIMONIALS = [
   {
     quote:
       "Sandtongrid transformed our AWS infrastructure with a secure and scalable architecture.",
-    author: "James Carter",
+    author: "Michael Anderson",
     role: "CTO, FinTech Company",
   },
   {
     quote:
       "Their DevOps automation reduced our deployment time from hours to minutes.",
-    author: "Sarah Mitchell",
+    author: "Emily Thompson",
     role: "Engineering Manager",
   },
   {
