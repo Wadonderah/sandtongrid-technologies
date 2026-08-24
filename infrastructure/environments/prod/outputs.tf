@@ -35,6 +35,18 @@ output "website_bucket_regional_domain_name" {
 }
 
 ###############################################################################
+# CloudFront Distribution ID
+###############################################################################
+
+output "cloudfront_distribution_id" {
+
+  description = "CloudFront distribution ID."
+
+  value = module.cloudfront.distribution_id
+
+}
+
+###############################################################################
 # CloudWatch Log Groups
 ###############################################################################
 

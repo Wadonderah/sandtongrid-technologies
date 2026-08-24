@@ -211,7 +211,7 @@ const caseStudies: CaseStudiesData = {
         quote:
           "Sandtongrid Technologies modernized our cloud infrastructure and significantly improved our deployment process. Their expertise exceeded our expectations.",
 
-        author: "James Mwangi",
+        author: "James Carter",
 
         role: "Head of Technology, Financial Services",
       },
@@ -220,7 +220,7 @@ const caseStudies: CaseStudiesData = {
         quote:
           "The DevOps transformation delivered by the team reduced manual work and improved our software delivery speed across multiple environments.",
 
-        author: "Sarah Otieno",
+        author: "Sarah Mitchell",
 
         role: "Engineering Manager, Healthcare",
       },
