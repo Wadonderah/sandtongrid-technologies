@@ -50,6 +50,10 @@ Navigation Layout
   gap: 3rem;
 
   min-height: 86px;
+
+  width: 100%;
+
+  padding-inline: 1.5rem;
 }
 
 .left {
@@ -279,9 +283,13 @@ Tablet
 
 @media (max-width: 1024px) {
   .navigation {
-    grid-template-columns: auto auto;
+    grid-template-columns: minmax(0, 1fr) auto;
 
     align-items: center;
+
+    gap: 1rem;
+
+    padding-inline: 1rem;
   }
 
   .mobileToggle {
@@ -292,12 +300,12 @@ Tablet
 
   .center,
   .right {
-    display: none;
+    display: none !important;
   }
 
   .center.mobileOpen,
   .right.mobileOpen {
-    display: flex;
+    display: flex !important;
 
     width: 100%;
 

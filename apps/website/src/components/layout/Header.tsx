@@ -45,6 +45,7 @@ const Header = () => {
           className={styles.mobileToggle}
           onClick={toggleMobileMenu}
           aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
         >
           <span></span>
           <span></span>
