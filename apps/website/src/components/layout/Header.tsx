@@ -27,13 +27,15 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className={`${styles.center} ${mobileMenuOpen ? styles.mobileOpen : ""}`}>
-          <Navigation
-            onNavigate={() => setMobileMenuOpen(false)}
-          />
+        <div
+          className={`${styles.center} ${mobileMenuOpen ? styles.mobileOpen : ""}`}
+        >
+          <Navigation onNavigate={() => setMobileMenuOpen(false)} />
         </div>
 
-        <div className={`${styles.right} ${mobileMenuOpen ? styles.mobileOpen : ""}`}>
+        <div
+          className={`${styles.right} ${mobileMenuOpen ? styles.mobileOpen : ""}`}
+        >
           <div className={styles.actions}>
             <Link to="/contact" className={styles.ctaButton}>
               Contact Us
