@@ -7,9 +7,31 @@ Case Studies Grid
 }
 
 .header {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto 3rem;
   text-align: center;
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.benefit {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .grid {
@@ -46,6 +68,45 @@ Case Studies Grid
 
 .title {
   margin-bottom: 1rem;
+}
+
+.content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.block,
+.result {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+}
+
+.block h4,
+.result span {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.block p,
+.result p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.result {
+  border-color: rgb(37 99 235 / 18%);
+  background: linear-gradient(135deg, rgb(37 99 235 / 8%), rgb(37 99 235 / 2%));
+}
+
+.result p {
+  color: var(--color-text);
 }
 
 .description {

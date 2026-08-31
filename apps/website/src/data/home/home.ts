@@ -30,21 +30,28 @@ const homeData = {
   ========================================================================== */
 
   hero: {
-    eyebrow: "AWS Advanced Consulting Partner",
+    eyebrow: "Cloud Strategy • Infrastructure • Automation",
 
-    title: "Modern Cloud Infrastructure Built for Growth",
+    title: "Secure Cloud Systems That Help Your Business Move Faster",
 
     description:
-      "We help organizations design, migrate and operate secure, scalable cloud platforms using AWS, Terraform, Kubernetes and DevOps best practices.",
+      "Sandtongrid helps organizations modernize their infrastructure, reduce operational drag, and ship with more confidence through AWS, DevOps, Kubernetes, automation, and security-first delivery.",
+
+    trustSignals: [
+      "Infrastructure Modernization",
+      "Cloud Security",
+      "DevOps Automation",
+      "Operational Resilience",
+    ],
 
     primaryButton: {
-      label: "Get Started",
+      label: "Book a Consultation",
 
       link: "/contact",
     },
 
     secondaryButton: {
-      label: "View Services",
+      label: "Explore Services",
 
       link: "/services",
     },
@@ -58,38 +65,38 @@ const homeData = {
   ========================================================================== */
 
   featureGrid: {
-    title: "Our Core Cloud Services",
+    title: "What We Help You Improve",
 
     description:
-      "We help organizations modernize, secure and optimize their cloud environments through end-to-end consulting, implementation and managed services.",
+      "From strategy to operations, we help businesses simplify cloud complexity and build platforms that are faster, safer, and easier to scale.",
 
     items: [
       {
         title: "Cloud Architecture",
 
         description:
-          "Design secure, scalable and highly available AWS architectures aligned with the AWS Well-Architected Framework.",
+          "Design resilient AWS platforms that support growth, strengthen security, and reduce infrastructure complexity.",
       },
 
       {
         title: "Cloud Migration",
 
         description:
-          "Plan and execute low-risk migrations from on-premises or legacy environments into AWS.",
+          "Move critical workloads with less risk, less disruption, and a clearer path to a more scalable future state.",
       },
 
       {
         title: "DevOps & Automation",
 
         description:
-          "Accelerate software delivery using CI/CD, Infrastructure as Code, Docker, Kubernetes and GitHub Actions.",
+          "Accelerate delivery with reliable CI/CD, automation, container orchestration, and cleaner operational workflows.",
       },
 
       {
-        title: "Managed Cloud Services",
+        title: "Managed Cloud Operations",
 
         description:
-          "24/7 monitoring, proactive maintenance, cloud security and continuous optimization for production workloads.",
+          "Keep production systems healthy with proactive monitoring, support, security improvements, and continuous optimization.",
       },
     ],
   },
@@ -222,19 +229,19 @@ const homeData = {
   ========================================================================== */
 
   cta: {
-    title: "Ready to Modernize Your Cloud?",
+    title: "Ready to Build a Better Cloud Foundation?",
 
     description:
-      "Partner with Sandtongrid Technologies to build secure, scalable and reliable cloud infrastructure using AWS, Terraform, Kubernetes and DevOps best practices.",
+      "Whether you are modernizing legacy systems or scaling a cloud-first platform, Sandtongrid can help you reduce risk, improve efficiency, and move with more confidence.",
 
     primaryButton: {
-      label: "Contact Us",
+      label: "Book a Strategy Call",
 
       link: "/contact",
     },
 
     secondaryButton: {
-      label: "View Services",
+      label: "Review Services",
 
       link: "/services",
     },

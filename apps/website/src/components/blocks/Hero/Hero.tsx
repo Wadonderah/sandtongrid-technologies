@@ -64,6 +64,18 @@ const Hero: FC<HeroProps> = ({ className = "" }) => {
               {hero.secondaryButton.label}
             </Button>
           </div>
+
+          <div className={styles.trustBar} aria-label="Trust signals">
+            <p className={styles.trustLabel}>Built for teams that need:</p>
+
+            <div className={styles.trustSignals}>
+              {hero.trustSignals.map((signal) => (
+                <span key={signal} className={styles.trustSignal}>
+                  {signal}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </Section>

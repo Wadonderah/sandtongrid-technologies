@@ -3,43 +3,75 @@ File: AboutHero.module.css
 ******************************************************************************/
 
 .hero {
-  background: linear-gradient(135deg, var(--brand-700), var(--brand-500));
-
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(8, 47, 73, 0.86), rgba(15, 23, 42, 0.78)),
+    url("@/assets/images/backgrounds/avnsuresh-ai-generated-8988761_1920.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--white);
-
   text-align: center;
-
   padding: 6rem 0;
 }
 
 .content {
+  position: relative;
+  z-index: 1;
   max-width: 800px;
-
   margin: 0 auto;
 }
 
 .subtitle {
   font-size: 1rem;
-
   text-transform: uppercase;
-
   letter-spacing: 0.1rem;
-
   margin-bottom: 1rem;
-
   opacity: 0.9;
 }
 
 .title {
   font-size: clamp(2.5rem, 5vw, 4rem);
-
   margin-bottom: 1.5rem;
 }
 
 .description {
   font-size: 1.2rem;
-
   line-height: 1.8;
-
   opacity: 0.95;
+  margin-bottom: 2rem;
+}
+
+.trustBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.trustSignal {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.22);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 0;
+  }
+
+  .trustBar {
+    justify-content: flex-start;
+    text-align: left;
+  }
 }

@@ -26,6 +26,10 @@ const MissionVision: FC<MissionVisionProps> = ({ className = "" }) => {
   return (
     <Section className={className}>
       <Container>
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>{missionVision.eyebrow}</p>
+        </div>
+
         <div className={styles.wrapper}>
           {/* ======================================================
                        Mission

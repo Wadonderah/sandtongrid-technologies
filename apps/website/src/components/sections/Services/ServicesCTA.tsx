@@ -42,21 +42,15 @@ const ServicesCTA: FC<ServicesCTAProps> = ({ className = "" }) => {
     <Section className={`${styles.cta} ${className}`.trim()}>
       <Container>
         <div className={styles.content}>
-          {/* ======================================================
-                        Section Heading
-                    ====================================================== */}
-
           <h2 className={styles.title}>{cta.title}</h2>
-
-          {/* ======================================================
-                        Supporting Description
-                    ====================================================== */}
 
           <p className={styles.description}>{cta.description}</p>
 
-          {/* ======================================================
-                        Call-To-Action Buttons
-                    ====================================================== */}
+          <div className={styles.trustBar} aria-label="Service promise">
+            <span>Clear roadmap</span>
+            <span>Practical execution</span>
+            <span>Measured results</span>
+          </div>
 
           <div className={styles.actions}>
             <Button

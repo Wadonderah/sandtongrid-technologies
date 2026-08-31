@@ -39,28 +39,15 @@ const ServiceProcess: FC<ServiceProcessProps> = ({ className = "" }) => {
   return (
     <Section className={`${styles.section} ${className}`.trim()}>
       <Container>
-        {/* ==========================================================
-                    Section Heading
-                ========================================================== */}
-
-        <h2>{process.title}</h2>
-
-        {/* ==========================================================
-                    Process Timeline
-                ========================================================== */}
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>How we work</p>
+          <h2>{process.title}</h2>
+        </div>
 
         <div className={styles.timeline}>
           {process.steps.map((step) => (
             <article key={step.number} className={styles.step}>
-              {/* --------------------------------------------------
-                                Step Number
-                            --------------------------------------------------- */}
-
               <div className={styles.number}>{step.number}</div>
-
-              {/* --------------------------------------------------
-                                Step Details
-                            --------------------------------------------------- */}
 
               <div>
                 <h3 className={styles.title}>{step.title}</h3>

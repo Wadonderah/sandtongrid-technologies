@@ -48,9 +48,19 @@ const ContactForm: FC<ContactFormProps> = ({ className = "" }) => {
         ========================================================== */}
 
         <header className={styles.header}>
+          <p className={styles.eyebrow}>{form.eyebrow}</p>
+
           <h2 className={styles.title}>{form.title}</h2>
 
           <p className={styles.description}>{form.description}</p>
+
+          <div className={styles.meta} aria-label="Contact form trust signals">
+            {form.trustSignals.map((signal) => (
+              <span key={signal} className={styles.metaItem}>
+                {signal}
+              </span>
+            ))}
+          </div>
         </header>
 
         {/* ==========================================================
@@ -87,7 +97,7 @@ const ContactForm: FC<ContactFormProps> = ({ className = "" }) => {
               Submit Button
           ====================================================== */}
 
-          <Button type="submit" variant="secondary">
+          <Button type="submit" variant="secondary" size="lg">
             {form.submitButton}
           </Button>
         </form>

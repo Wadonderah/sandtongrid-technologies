@@ -27,7 +27,7 @@ const ServicesHero: FC<ServicesHeroProps> = ({ className = "" }) => {
   return (
     <Section className={`${styles.hero} ${className}`.trim()}>
       <Container>
-        <div className={styles.content}>
+        <div className={`${styles.content} animate-fade-up`}>
           {/* ======================================================
                        Eyebrow
                     ====================================================== */}
@@ -45,6 +45,14 @@ const ServicesHero: FC<ServicesHeroProps> = ({ className = "" }) => {
                     ====================================================== */}
 
           <p className={styles.description}>{hero.description}</p>
+
+          <div className={styles.trustBar} aria-label="Service trust signals">
+            {hero.trustSignals.map((signal) => (
+              <span key={signal} className={styles.trustSignal}>
+                {signal}
+              </span>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>

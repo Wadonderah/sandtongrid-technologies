@@ -1,156 +1,79 @@
 /******************************************************************************
-File: ContactForm.module.css
+File: ContactHero.module.css
 ------------------------------------------------------------------------------
 Purpose:
-Styles the Contact Form section.
-
-Responsibilities:
-- Layout the Contact section.
-- Style the section heading.
-- Style form fields.
-- Provide consistent input and textarea appearance.
-- Handle focus states.
-- Provide responsive behaviour.
+Hero styles for the Contact page.
 ******************************************************************************/
 
-/* =============================================================================
-   Contact Section
-============================================================================= */
-
-.section {
-  background: var(--color-background);
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.86),
+    rgba(8, 47, 73, 0.72)
+  );
+  color: var(--white);
 }
 
-/* =============================================================================
-   Section Header
-============================================================================= */
-
-.header {
-  max-width: 720px;
-  margin: 0 auto 3rem;
-  text-align: center;
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
 }
 
-/* ---------------------------------------------------------------------------
-   Main Heading
----------------------------------------------------------------------------- */
+.eyebrow {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
 
 .title {
-  margin: 0 0 1rem;
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--white);
 }
-
-/* ---------------------------------------------------------------------------
-   Supporting Description
----------------------------------------------------------------------------- */
 
 .description {
-  margin: 0;
-  color: var(--color-text-secondary);
-  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.15rem;
+  line-height: 1.8;
 }
 
-/* =============================================================================
-   Contact Form Layout
-============================================================================= */
-
-.form {
-  max-width: 760px;
-  margin: 0 auto;
-  display: grid;
-  gap: 1.5rem;
-}
-
-/* =============================================================================
-   Individual Form Field
-============================================================================= */
-
-.field {
+.trustBar {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-/* ---------------------------------------------------------------------------
-   Field Labels
----------------------------------------------------------------------------- */
-
-.field label {
-  font-weight: 600;
-  color: var(--color-text);
+.trustSignal {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.22);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
 }
-
-/* =============================================================================
-   Shared Input Styles
-============================================================================= */
-
-.field input,
-.field textarea {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-surface);
-  color: var(--color-text);
-  font: inherit;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-/* ---------------------------------------------------------------------------
-   Textarea
----------------------------------------------------------------------------- */
-
-.field textarea {
-  resize: vertical;
-  min-height: 180px;
-}
-
-/* ---------------------------------------------------------------------------
-   Placeholder Text
----------------------------------------------------------------------------- */
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: var(--color-text-secondary);
-}
-
-/* ---------------------------------------------------------------------------
-   Focus State
----------------------------------------------------------------------------- */
-
-.field input:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgb(37 99 235 / 15%);
-}
-
-/* =============================================================================
-   Submit Button
-============================================================================= */
-
-.form > button {
-  justify-self: flex-start;
-  margin-top: 0.5rem;
-}
-
-/* =============================================================================
-   Responsive Layout
-============================================================================= */
 
 @media (max-width: 768px) {
-  .header {
-    margin-bottom: 2rem;
+  .hero {
+    padding: 5rem 0;
   }
 
-  .form {
-    gap: 1.25rem;
-  }
-
-  .form > button {
-    width: 100%;
+  .description {
+    font-size: 1rem;
   }
 }

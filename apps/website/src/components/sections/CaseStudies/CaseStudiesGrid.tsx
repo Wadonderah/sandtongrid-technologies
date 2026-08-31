@@ -22,9 +22,7 @@ import styles from "./CaseStudiesGrid.module.css";
 
 import type { CaseStudiesGridProps } from "./CaseStudiesGrid.types";
 
-const CaseStudiesGrid: FC<CaseStudiesGridProps> = ({
-  className = "",
-}) => {
+const CaseStudiesGrid: FC<CaseStudiesGridProps> = ({ className = "" }) => {
   const { featured } = caseStudies;
 
   return (
@@ -34,21 +32,22 @@ const CaseStudiesGrid: FC<CaseStudiesGridProps> = ({
           <h2>{featured.title}</h2>
 
           <p>{featured.description}</p>
+
+          <div className={styles.benefits} aria-label="Business outcomes">
+            {caseStudies.benefits.items.map((item) => (
+              <span key={item} className={styles.benefit}>
+                {item}
+              </span>
+            ))}
+          </div>
         </header>
 
         <div className={styles.grid}>
           {featured.studies.map((study) => (
-            <Card
-              key={study.title}
-              className={styles.card}
-            >
-              <span className={styles.industry}>
-                {study.industry}
-              </span>
+            <Card key={study.title} className={styles.card} hover fullHeight>
+              <span className={styles.industry}>{study.industry}</span>
 
-              <h3 className={styles.title}>
-                {study.title}
-              </h3>
+              <h3 className={styles.title}>{study.title}</h3>
 
               <div className={styles.content}>
                 <div className={styles.block}>
@@ -63,8 +62,8 @@ const CaseStudiesGrid: FC<CaseStudiesGridProps> = ({
                   <p>{study.solution}</p>
                 </div>
 
-                <div className={styles.block}>
-                  <h4>Outcome</h4>
+                <div className={styles.result}>
+                  <span>Outcome</span>
 
                   <p>{study.outcome}</p>
                 </div>

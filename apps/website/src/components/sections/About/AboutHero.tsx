@@ -24,7 +24,7 @@ const AboutHero: FC<AboutHeroProps> = ({ className = "" }) => {
   return (
     <Section className={`${styles.hero} ${className}`.trim()}>
       <Container>
-        <div className={styles.content}>
+        <div className={`${styles.content} animate-fade-up`}>
           {/* ======================================================
                        Eyebrow
                     ====================================================== */}
@@ -42,6 +42,14 @@ const AboutHero: FC<AboutHeroProps> = ({ className = "" }) => {
                     ====================================================== */}
 
           <p className={styles.description}>{about.hero.description}</p>
+
+          <div className={styles.trustBar} aria-label="Company trust signals">
+            {about.hero.trustSignals.map((signal) => (
+              <span key={signal} className={styles.trustSignal}>
+                {signal}
+              </span>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>

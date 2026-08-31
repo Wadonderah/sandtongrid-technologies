@@ -23,11 +23,8 @@ Responsibilities:
   padding: 8rem 0;
 
   background:
-    linear-gradient(
-      rgba(15, 23, 42, 0.72),
-      rgba(15, 23, 42, 0.72)
-    ),
-    url("@/assets/images/backgrounds/avnsuresh-ai-generated-8988761_1920.jpg");
+    linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.72)),
+    url("@/assets/images/backgrounds/images\ \(6\).jpg");
 
   background-position: center;
 
@@ -110,6 +107,58 @@ Responsibilities:
   align-items: center;
 
   gap: 1.5rem;
+}
+
+/* ============================================================================
+   Trust Bar
+============================================================================ */
+
+.trustBar {
+  margin-top: 2rem;
+}
+
+.trustLabel {
+  margin-bottom: 0.9rem;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.trustSignals {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+}
+
+.trustSignal {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0.7rem 1rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  background: rgba(15, 23, 42, 0.24);
+
+  color: var(--white);
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  backdrop-filter: blur(6px);
 }
 
 /* ============================================================================

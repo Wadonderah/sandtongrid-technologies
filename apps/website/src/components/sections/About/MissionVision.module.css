@@ -2,6 +2,19 @@
 File: MissionVision.module.css
 ******************************************************************************/
 
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .wrapper {
   display: grid;
 
@@ -17,7 +30,8 @@ File: MissionVision.module.css
 
   border: 1px solid var(--gray-200);
 
-  background: var(--white);
+  background: linear-gradient(180deg, var(--white), rgba(244, 246, 250, 0.9));
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
 .card h2 {

@@ -81,12 +81,14 @@ interface ServicesData {
     eyebrow: string;
     title: string;
     description: string;
+    trustSignals: string[];
   };
 
   cloudConsulting: {
     eyebrow: string;
     title: string;
     description: string;
+    benefits: string[];
     services: ContentCard[];
   };
 
@@ -138,6 +140,13 @@ const services: ServicesData = {
 
     description:
       "We help organizations adopt cloud technologies, automate infrastructure, improve software delivery and operate secure, scalable platforms.",
+
+    trustSignals: [
+      "AWS-first strategy",
+      "Security by design",
+      "Faster delivery",
+      "Measured outcomes",
+    ],
   },
 
   /* =========================================================================
@@ -153,6 +162,12 @@ const services: ServicesData = {
 
     description:
       "Our consultants help organizations design secure, scalable and cost-effective cloud solutions.",
+
+    benefits: [
+      "Roadmaps built around business goals",
+      "Architecture that scales with growth",
+      "Security and cost controls built in",
+    ],
 
     services: [
       {
@@ -326,7 +341,7 @@ const services: ServicesData = {
     ],
   },
 
-    /* =========================================================================
+  /* =========================================================================
      Delivery Process Section
      -------------------------------------------------------------------------
      Standard project delivery approach.

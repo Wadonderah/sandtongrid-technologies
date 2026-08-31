@@ -32,9 +32,7 @@ import styles from "./WhySandtongrid.module.css";
 
 import type { WhySandtongridProps } from "./WhySandtongrid.types";
 
-const WhySandtongrid: FC<WhySandtongridProps> = ({
-  className = "",
-}) => {
+const WhySandtongrid: FC<WhySandtongridProps> = ({ className = "" }) => {
   const { whySandtongrid } = about;
 
   return (
@@ -45,17 +43,19 @@ const WhySandtongrid: FC<WhySandtongridProps> = ({
         ========================================================== */}
 
         <div className={styles.header}>
-          <p className={styles.eyebrow}>
-            {whySandtongrid.eyebrow}
-          </p>
+          <p className={styles.eyebrow}>{whySandtongrid.eyebrow}</p>
 
-          <h2 className={styles.title}>
-            {whySandtongrid.title}
-          </h2>
+          <h2 className={styles.title}>{whySandtongrid.title}</h2>
 
-          <p className={styles.description}>
-            {whySandtongrid.description}
-          </p>
+          <p className={styles.description}>{whySandtongrid.description}</p>
+
+          <div className={styles.trustPoints} aria-label="Key trust points">
+            {whySandtongrid.trustPoints.map((point) => (
+              <span key={point} className={styles.trustPoint}>
+                {point}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* ==========================================================
@@ -64,12 +64,7 @@ const WhySandtongrid: FC<WhySandtongridProps> = ({
 
         <div className={styles.grid}>
           {whySandtongrid.highlights.map((item) => (
-            <Card
-              key={item.title}
-              hover
-              fullHeight
-              className={styles.card}
-            >
+            <Card key={item.title} hover fullHeight className={styles.card}>
               <h3>{item.title}</h3>
 
               <p>{item.description}</p>

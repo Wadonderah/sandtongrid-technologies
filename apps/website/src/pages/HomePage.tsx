@@ -42,6 +42,9 @@ import Newsletter from "../components/blocks/Newsletter";
 ============================================================================ */
 
 import WhySandtongrid from "../components/sections/About/WhySandtongrid";
+import CaseStudiesGrid from "../components/sections/CaseStudies/CaseStudiesGrid";
+import FeaturedInsights from "../components/sections/Resources/FeaturedInsights";
+import { ServiceProcess } from "../components/sections/Services";
 
 const HomePage = () => {
   return (
@@ -67,6 +70,24 @@ const HomePage = () => {
       ========================================================== */}
 
       <FeatureGrid />
+
+      {/* ==========================================================
+          Delivery Process
+      ========================================================== */}
+
+      <ServiceProcess />
+
+      {/* ==========================================================
+          Featured Outcomes
+      ========================================================== */}
+
+      <CaseStudiesGrid />
+
+      {/* ==========================================================
+          Featured Insights
+      ========================================================== */}
+
+      <FeaturedInsights />
 
       {/* ==========================================================
           Why Choose Sandtongrid

@@ -54,6 +54,12 @@ const ContactCTA: FC<ContactCTAProps> = ({ className = "" }) => {
 
           <p className={styles.description}>{cta.description}</p>
 
+          <div className={styles.trustBar} aria-label="Response expectations">
+            <span>Fast response</span>
+            <span>Clear roadmap</span>
+            <span>No hard sell</span>
+          </div>
+
           {/* ======================================================
                         Call-To-Action Buttons
                     ====================================================== */}

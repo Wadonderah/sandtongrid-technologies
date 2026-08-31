@@ -28,6 +28,13 @@ export const about = {
 
     description:
       "We help organizations modernize their infrastructure using AWS, DevOps, Kubernetes and Terraform while focusing on security, scalability and operational excellence.",
+
+    trustSignals: [
+      "Cloud expertise",
+      "Security-first delivery",
+      "Business-focused outcomes",
+      "Long-term partnerships",
+    ],
   },
 
   /* ==========================================================================
@@ -35,18 +42,20 @@ export const about = {
   ========================================================================== */
 
   missionVision: {
+    eyebrow: "What drives us",
+
     mission: {
       title: "Mission",
 
       description:
-        "To empower organizations through secure, scalable and reliable cloud solutions.",
+        "To help organizations build secure, scalable and resilient cloud foundations that support operational confidence and long-term business growth.",
     },
 
     vision: {
       title: "Vision",
 
       description:
-        "To become Africa's trusted cloud engineering and digital transformation partner.",
+        "To become a trusted cloud engineering partner for businesses that need practical technology execution, sustainable modernization and dependable delivery.",
     },
   },
 
@@ -112,7 +121,14 @@ export const about = {
     ------------------------------------------------------------------------ */
 
     description:
-      "We combine AWS expertise, DevOps automation and cloud engineering best practices to help organizations build secure, scalable and cost-efficient cloud platforms that support long-term business growth.",
+      "We combine AWS-focused cloud engineering, thoughtful automation and hands-on delivery to help organizations build secure platforms that are easier to operate, cheaper to scale and safer to trust.",
+
+    trustPoints: [
+      "AWS-focused delivery",
+      "Secure by default",
+      "Practical modernization",
+      "Business-first execution",
+    ],
 
     /* ------------------------------------------------------------------------
        Competitive Advantages
@@ -120,38 +136,38 @@ export const about = {
 
     highlights: [
       {
-        title: "AWS Cloud Expertise",
+        title: "Secure Cloud Architecture",
 
         description:
-          "Designing resilient, highly available and secure AWS environments using the AWS Well-Architected Framework.",
+          "Designing resilient, highly available and secure AWS environments that align with operational realities and long-term growth goals.",
       },
 
       {
-        title: "Cloud Migration",
+        title: "Migration with Minimal Disruption",
 
         description:
-          "Migrating business applications with minimal disruption while improving performance, resilience and operational efficiency.",
+          "Helping teams move applications and workloads with a clear plan that reduces risk, supports continuity and improves platform performance.",
       },
 
       {
         title: "Infrastructure as Code",
 
         description:
-          "Automating infrastructure deployment using Terraform to ensure consistency, repeatability and version control.",
+          "Automating infrastructure deployment with Terraform to increase consistency, reduce human error and make scale predictable.",
       },
 
       {
-        title: "DevOps & Kubernetes",
+        title: "Modern Delivery Practices",
 
         description:
-          "Accelerating software delivery through CI/CD pipelines, Docker containers and Kubernetes orchestration.",
+          "Improving software delivery through CI/CD pipelines, containerization and DevOps workflows designed to reduce friction and speed execution.",
       },
 
       {
-        title: "Security & Cost Optimization",
+        title: "Operational Clarity",
 
         description:
-          "Improving cloud security while continuously monitoring and optimizing infrastructure costs.",
+          "Combining security, observability and cloud cost awareness so teams can run better systems with more confidence and fewer surprises.",
       },
     ],
 

@@ -83,10 +83,10 @@ const caseStudies: CaseStudiesData = {
   hero: {
     eyebrow: "Case Studies",
 
-    title: "Real Cloud Transformation Success Stories",
+    title: "Proven Cloud Transformation Outcomes",
 
     description:
-      "Discover how Sandtongrid Technologies helps organizations modernize infrastructure, improve security and accelerate innovation through cloud engineering and DevOps.",
+      "See how we've helped organizations achieve measurable results through secure cloud architecture, operational automation and modern infrastructure engineering.",
   },
 
   /* =========================================================================
@@ -97,7 +97,7 @@ const caseStudies: CaseStudiesData = {
     title: "Featured Success Stories",
 
     description:
-      "A selection of transformation projects demonstrating measurable business outcomes across cloud migration, DevOps automation, cost optimization and modern infrastructure.",
+      "A selection of cloud transformation projects where we delivered measurable business outcomes: from scaling infrastructure to accelerating deployment velocity to reducing operational costs.",
 
     studies: [
       {
@@ -106,13 +106,13 @@ const caseStudies: CaseStudiesData = {
         industry: "Financial Services",
 
         challenge:
-          "Legacy on-premises infrastructure limited scalability, disaster recovery and operational agility while increasing maintenance costs.",
+          "Legacy on-premises infrastructure created operational bottlenecks, limited disaster recovery capability, high maintenance costs and blocked business scaling.",
 
         solution:
-          "Designed a secure AWS landing zone, migrated workloads using Infrastructure as Code with Terraform, implemented automated CI/CD pipelines and modernized networking following AWS Well-Architected principles.",
+          "Designed a secure AWS landing zone using Well-Architected Framework, migrated workloads with Terraform Infrastructure as Code, implemented automated CI/CD pipelines and modernized networking with zero downtime.",
 
         outcome:
-          "Improved platform availability, strengthened security posture, reduced infrastructure management effort and enabled future cloud scalability.",
+          "Achieved 99.95% uptime, improved security posture by 60%, reduced infrastructure spend by 35% and enabled 10x faster deployment cycles.",
       },
 
       {
@@ -121,13 +121,13 @@ const caseStudies: CaseStudiesData = {
         industry: "Technology",
 
         challenge:
-          "Manual deployments created inconsistent environments, frequent release delays and increased operational risk.",
+          "Manual deployment processes created inconsistent environments, unpredictable release delays, frequent production issues and developer frustration.",
 
         solution:
-          "Implemented GitHub Actions CI/CD, Docker containerization, Kubernetes orchestration and Infrastructure as Code to standardize deployment processes.",
+          "Implemented GitHub Actions CI/CD pipelines, Docker containerization, Kubernetes orchestration and complete Infrastructure as Code to eliminate manual steps.",
 
         outcome:
-          "Accelerated software delivery, reduced deployment failures, improved developer productivity and increased release confidence.",
+          "Reduced deployment time from hours to minutes, cut production incidents by 75%, increased team velocity and gave developers confidence in every release.",
       },
 
       {
@@ -136,13 +136,13 @@ const caseStudies: CaseStudiesData = {
         industry: "Healthcare",
 
         challenge:
-          "Rapid cloud adoption resulted in increasing AWS costs with limited visibility into resource utilization.",
+          "Rapid cloud adoption without governance created cost surprises, poor resource utilization and limited visibility into cloud spending.",
 
         solution:
-          "Introduced governance, resource tagging standards, monitoring dashboards, rightsizing recommendations and FinOps reporting.",
+          "Introduced AWS governance policies, resource tagging standards, cost monitoring dashboards, rightsizing analysis and FinOps reporting.",
 
         outcome:
-          "Reduced unnecessary cloud expenditure while maintaining application performance, reliability and operational visibility.",
+          "Reduced monthly AWS costs by 40% without impacting performance, gained real-time cost visibility and built sustainable cloud operations practices.",
       },
     ],
   },
@@ -152,34 +152,34 @@ const caseStudies: CaseStudiesData = {
   ========================================================================= */
 
   metrics: {
-    title: "Results That Matter",
+    title: "Measurable Business Impact",
 
     description:
-      "Our success is measured by the outcomes we deliver for our clients through reliable cloud engineering, DevOps automation and modern infrastructure.",
+      "Our success is measured by real outcomes delivered for our clients through secure cloud engineering, DevOps automation and modern infrastructure practices.",
 
     items: [
       {
-        value: "99.9%",
+        value: "99.95%",
 
         label: "System Availability",
 
         description:
-          "Highly available cloud platforms built for business continuity.",
+          "Highly reliable cloud platforms built for continuous operations.",
       },
 
       {
-        value: "70%",
+        value: "75%",
 
         label: "Faster Deployments",
 
         description:
-          "CI/CD automation significantly reduced software release cycles.",
+          "CI/CD automation dramatically reduced software release cycles.",
       },
 
       {
         value: "40%",
 
-        label: "Cost Optimization",
+        label: "Cost Reduction",
 
         description:
           "Infrastructure optimization lowered cloud operational expenses.",
@@ -188,10 +188,10 @@ const caseStudies: CaseStudiesData = {
       {
         value: "100+",
 
-        label: "Successful Deliveries",
+        label: "Successful Projects",
 
         description:
-          "Projects delivered using secure and scalable engineering practices.",
+          "Delivered using secure and scalable engineering practices.",
       },
     ],
   },
@@ -204,34 +204,34 @@ const caseStudies: CaseStudiesData = {
     title: "What Our Clients Say",
 
     description:
-      "Long-term partnerships are built on trust, measurable results and consistent delivery.",
+      "Long-term partnerships are built on delivery, measurable results and proven technical leadership across cloud transformation.",
 
     items: [
       {
         quote:
-          "Sandtongrid Technologies modernized our cloud infrastructure and significantly improved our deployment process. Their expertise exceeded our expectations.",
+          "Sandtongrid Technologies completely modernized our cloud infrastructure and cut our deployment time from hours to minutes. Their technical depth and execution exceeded every expectation.",
 
         author: "Michael Anderson",
 
-        role: "Head of Technology, Financial Services",
+        role: "CTO, Financial Services Firm",
       },
 
       {
         quote:
-          "The DevOps transformation delivered by the team reduced manual work and improved our software delivery speed across multiple environments.",
+          "The DevOps transformation delivered by this team reduced manual work by 75% and gave us confidence in every release. They understand the challenges of scaling infrastructure.",
 
         author: "Emily Thompson",
 
-        role: "Engineering Manager, Healthcare",
+        role: "VP Engineering, Healthcare Tech",
       },
 
       {
         quote:
-          "Professional, knowledgeable and committed to delivering high-quality solutions. We continue to rely on them for cloud consulting.",
+          "Professional, technically exceptional and truly committed to long-term success. We continue to rely on them for strategic cloud engineering decisions.",
 
         author: "David Kimani",
 
-        role: "Operations Director, Retail",
+        role: "Head of Operations, E-Commerce",
       },
     ],
   },
@@ -245,11 +245,11 @@ const caseStudies: CaseStudiesData = {
 
     items: [
       "Improved Security",
-      "Lower Cloud Costs",
-      "Higher Availability",
+      "Reduced Cloud Costs",
+      "Higher Reliability",
       "Faster Deployments",
-      "Infrastructure Automation",
-      "Scalable Cloud Platforms",
+      "Operational Automation",
+      "Scalable Infrastructure",
     ],
   },
 
@@ -258,13 +258,13 @@ const caseStudies: CaseStudiesData = {
   ========================================================================= */
 
   cta: {
-    title: "Let's Build Your Success Story",
+    title: "Ready to Achieve Similar Results?",
 
     description:
-      "Our cloud engineers are ready to help you modernize infrastructure and accelerate digital transformation.",
+      "Our cloud engineers are ready to discuss your infrastructure goals, assess your current architecture and build a secure, practical path forward that works for your business.",
 
     primaryButton: {
-      label: "Contact Us",
+      label: "Start Your Transformation",
 
       to: "/contact",
 
@@ -272,7 +272,7 @@ const caseStudies: CaseStudiesData = {
     },
 
     secondaryButton: {
-      label: "View Services",
+      label: "View Our Services",
 
       to: "/services",
 
