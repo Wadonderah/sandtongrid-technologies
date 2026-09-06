@@ -27,7 +27,13 @@ const Avatar: FC<AvatarProps> = ({
       }}
     >
       {src ? (
-        <img src={src} alt={alt} className={styles.image} />
+        <img
+          src={src}
+          alt={alt}
+          className={styles.image}
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <span className={styles.initials}>{initials}</span>
       )}

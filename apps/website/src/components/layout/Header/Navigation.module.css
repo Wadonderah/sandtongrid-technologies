@@ -19,21 +19,21 @@ File: Navigation.module.css
 }
 
 .link {
-  color: var(--gray-700);
+  color: var(--color-heading);
 
   text-decoration: none;
 
-  font-weight: 500;
+  font-weight: 600;
 
   transition: color var(--duration-normal) var(--ease-standard);
 }
 
 .link:hover {
-  color: var(--brand-600);
+  color: var(--color-primary);
 }
 
 .active {
-  color: var(--brand-600);
+  color: var(--color-primary);
 }
 
 @media (max-width: 1024px) {

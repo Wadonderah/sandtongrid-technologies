@@ -20,6 +20,8 @@
  */
 
 import SEO from "../components/seo";
+import siteConfig from "../config/site";
+import careersData from "../data/careers/careers";
 
 import {
   CareersHero,
@@ -29,6 +31,30 @@ import {
   CareersCTA,
 } from "../components/sections/Careers";
 
+const jobPostingSchemas = careersData.openPositions.jobs.map((job) => ({
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  title: job.title,
+  description: job.description,
+  identifier: {
+    "@type": "PropertyValue",
+    name: siteConfig.company.name,
+    value: job.id,
+  },
+  datePosted: "2025-01-15",
+  employmentType: "FULL_TIME",
+  hiringOrganization: {
+    "@type": "Organization",
+    name: siteConfig.company.name,
+    sameAs: siteConfig.website.url,
+  },
+  jobLocationType: "TELECOMMUTE",
+  applicantLocationRequirements: {
+    "@type": "Country",
+    name: "Worldwide",
+  },
+}));
+
 const CareersPage = () => {
   return (
     <>
@@ -36,6 +62,7 @@ const CareersPage = () => {
         title="Careers"
         description="Join Sandtongrid Technologies and help build secure, scalable cloud solutions for organizations worldwide."
         canonical="/careers"
+        schema={jobPostingSchemas}
       />
 
       {/* ==========================================================

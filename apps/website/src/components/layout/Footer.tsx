@@ -48,6 +48,10 @@ const Footer = () => {
                 src={logo}
                 alt="Sandtongrid Technologies"
                 className={styles.logo}
+                width={260}
+                height={60}
+                loading="lazy"
+                decoding="async"
               />
             </Link>
 

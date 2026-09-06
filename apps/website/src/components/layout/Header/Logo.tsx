@@ -42,6 +42,9 @@ const Logo: FC<LogoProps> = ({ className = "" }) => {
         src={logo}
         alt="Sandtongrid Technologies"
         className={styles.image}
+        width={180}
+        height={42}
+        decoding="async"
       />
     </Link>
   );
