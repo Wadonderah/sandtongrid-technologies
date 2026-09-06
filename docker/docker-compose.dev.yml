@@ -27,7 +27,7 @@ services:
       - ../apps/website:/app
       - website-dev-node-modules:/app/node_modules
 
-    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+    command: sh -c "if [ -f package-lock.json ]; then npm ci; else npm install; fi && npm run dev -- --host 0.0.0.0"
 
     environment:
       CHOKIDAR_USEPOLLING: "true"

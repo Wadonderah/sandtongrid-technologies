@@ -21,7 +21,6 @@ on:
 
 env:
   IMAGE_NAME: sandtongrid-website
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   docker-build:
@@ -99,13 +98,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: apps/website/package-lock.json
 
       - name: Lint Website
         working-directory: apps/website
         run: |
-          npm ci
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
           npm run lint
 
       - name: Build Website

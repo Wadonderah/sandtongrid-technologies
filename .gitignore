@@ -88,9 +88,14 @@ coverage/
 *.tsbuildinfo
 *.tgz
 .DS_Store
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
+!package.json
+!**/package.json
+!package-lock.json
+!**/package-lock.json
+!tsconfig*.json
+!**/tsconfig*.json
 
 # ======================================
 # React / Vite / Frontend
@@ -100,8 +105,6 @@ apps/**/.vite/
 apps/**/node_modules/
 apps/**/build/
 apps/**/.cache/
-**/vite.config.js
-**/vite.config.ts
 
 # ======================================
 # AWS

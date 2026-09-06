@@ -1,0 +1,14 @@
+{
+  "name": "sandtongrid-technologies",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/website",
+    "build": "npm run build --workspace=apps/website && mkdir -p dist && cp -r apps/website/dist/. dist/",
+    "preview": "npm run preview --workspace=apps/website",
+    "lint": "npm run lint --workspace=apps/website"
+  }
+}

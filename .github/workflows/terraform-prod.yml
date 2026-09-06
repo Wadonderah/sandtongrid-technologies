@@ -23,7 +23,6 @@ concurrency:
 env:
   TF_WORKING_DIR: infrastructure/environments/prod
   AWS_REGION: eu-west-1
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 permissions:
   contents: read
@@ -202,13 +201,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: apps/website/package-lock.json
 
       - name: Build Website
         working-directory: apps/website
         run: |
-          npm ci
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
           npm run build
 
       - name: Configure AWS Credentials
