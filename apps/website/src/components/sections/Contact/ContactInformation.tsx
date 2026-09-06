@@ -61,9 +61,16 @@ const ContactInformation: FC<ContactInformationProps> = ({
                     ------------------------------------------------------- */}
 
           <article className={styles.card}>
-            <h3>Email</h3>
+            <h3 className={styles.title}>Email</h3>
 
-            <p>{information.email}</p>
+            <p className={styles.value}>
+              <a
+                href={`mailto:${information.email}`}
+                className={styles.link}
+              >
+                {information.email}
+              </a>
+            </p>
           </article>
 
           {/* ------------------------------------------------------
@@ -71,9 +78,16 @@ const ContactInformation: FC<ContactInformationProps> = ({
                     ------------------------------------------------------- */}
 
           <article className={styles.card}>
-            <h3>Phone</h3>
+            <h3 className={styles.title}>Phone</h3>
 
-            <p>{information.phone}</p>
+            <p className={styles.value}>
+              <a
+                href={`tel:${information.phone.replace(/\s+/g, "")}`}
+                className={styles.link}
+              >
+                {information.phone}
+              </a>
+            </p>
           </article>
 
           {/* ------------------------------------------------------
@@ -81,9 +95,9 @@ const ContactInformation: FC<ContactInformationProps> = ({
                     ------------------------------------------------------- */}
 
           <article className={styles.card}>
-            <h3>Office</h3>
+            <h3 className={styles.title}>Office</h3>
 
-            <p>{information.address}</p>
+            <p className={styles.value}>{information.address}</p>
           </article>
 
           {/* ------------------------------------------------------
@@ -91,9 +105,9 @@ const ContactInformation: FC<ContactInformationProps> = ({
                     ------------------------------------------------------- */}
 
           <article className={styles.card}>
-            <h3>Business Hours</h3>
+            <h3 className={styles.title}>Business Hours</h3>
 
-            <p>{information.businessHours}</p>
+            <p className={styles.value}>{information.businessHours}</p>
           </article>
         </div>
       </Container>
