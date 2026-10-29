@@ -7,17 +7,26 @@
   width: 2.5rem;
   height: 2.5rem;
 
-  border: none;
+  border: 1.5px solid var(--color-border);
 
   border-radius: 50%;
 
   cursor: pointer;
 
-  background: transparent;
+  background: var(--color-surface);
 
-  transition: background 0.2s ease;
+  color: var(--color-heading);
+
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
 .button:hover {
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--color-surface-hover);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }

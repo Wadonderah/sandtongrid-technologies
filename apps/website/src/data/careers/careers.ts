@@ -85,7 +85,35 @@ const careers = {
       buttonLink: "/contact",
     },
 
-    jobs: [] as Job[],
+    jobs: [
+      {
+        id: "senior-aws-cloud-architect",
+        title: "Senior AWS Cloud Architect",
+        location: "Remote / Hybrid",
+        employmentType: "Full Time",
+        department: "Cloud Engineering",
+        description:
+          "Architect enterprise-scale AWS landing zones, Well-Architected governance frameworks, and migration strategies for global clients.",
+      },
+      {
+        id: "devops-sre-engineer",
+        title: "DevOps & SRE Infrastructure Engineer",
+        location: "Remote",
+        employmentType: "Full Time",
+        department: "DevOps & Automation",
+        description:
+          "Design and automate Terraform IaC, Kubernetes (Amazon EKS) clusters, CI/CD pipelines with GitHub Actions, and 24/7 observability suites.",
+      },
+      {
+        id: "cloud-security-specialist",
+        title: "Cloud Security & Compliance Engineer",
+        location: "Remote",
+        employmentType: "Full Time",
+        department: "Cloud Security",
+        description:
+          "Implement Zero-Trust architectures, AWS WAF, GuardDuty, KMS key governance, and automated SOC2 / ISO compliance guardrails.",
+      },
+    ] as Job[],
   },
 
   hiringProcess: {

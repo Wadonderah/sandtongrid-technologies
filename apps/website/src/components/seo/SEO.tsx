@@ -29,9 +29,10 @@ type SEOProps = {
   title?: string;
   description?: string;
   canonical?: string;
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
-const SEO = ({ title, description, canonical = "/" }: SEOProps) => {
+const SEO = ({ title, description, canonical = "/", schema }: SEOProps) => {
   const pageTitle = title
     ? `${title} | ${siteConfig.company.name}`
     : seoConfig.title;
@@ -142,6 +143,16 @@ const SEO = ({ title, description, canonical = "/" }: SEOProps) => {
           },
         })}
       </script>
+
+      {/* ==========================================================
+          Page-Specific Structured Data
+      ========================================================== */}
+      {schema &&
+        (Array.isArray(schema) ? schema : [schema]).map((item, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(item)}
+          </script>
+        ))}
     </Helmet>
   );
 };

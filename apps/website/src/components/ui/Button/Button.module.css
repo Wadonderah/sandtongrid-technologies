@@ -155,6 +155,42 @@ Responsibilities:
 }
 
 /* =============================================================================
+   Dark Theme Contrast Fixes (WCAG AA Compliance)
+============================================================================= */
+
+:global([data-theme="dark"]) .secondary {
+  background: var(--color-surface);
+  color: var(--color-heading);
+  border-color: var(--color-border);
+}
+
+:global([data-theme="dark"]) .secondary:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+:global([data-theme="dark"]) .outline {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+:global([data-theme="dark"]) .outline:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: #071423;
+  border-color: var(--color-primary);
+}
+
+:global([data-theme="dark"]) .ghost {
+  color: var(--color-heading);
+}
+
+:global([data-theme="dark"]) .ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-primary);
+}
+
+/* =============================================================================
    Danger
 ============================================================================= */
 
