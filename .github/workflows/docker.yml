@@ -8,6 +8,9 @@
 
 name: Docker CI
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
