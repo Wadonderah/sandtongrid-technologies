@@ -205,10 +205,10 @@ jobs:
       - name: Build Website
         working-directory: apps/website
         run: |
-          # Delete the Windows-generated lockfile and reinstall fresh on Linux so
-          # platform-specific optional dependencies (rolldown native bindings) are
-          # resolved correctly for the runner's OS/CPU.
-          rm -f package-lock.json
+          # Delete the Windows-generated lockfile AND node_modules so npm resolves
+          # all platform-specific optional dependencies (rolldown native bindings)
+          # fresh for the Linux runner's OS/CPU.
+          rm -rf node_modules package-lock.json
           npm install
           npm run build
 
