@@ -156,6 +156,7 @@ coverage/
 docker-compose*.override.yml
 docker-compose*.override.yaml
 *.dockerignore
+!.dockerignore
 .docker/
 docker-sync.yml
 
