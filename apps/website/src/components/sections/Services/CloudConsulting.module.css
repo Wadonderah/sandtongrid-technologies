@@ -56,7 +56,8 @@ Cloud Consulting
 }
 
 .card {
-  padding: var(--space-7);
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
 }
 
 .grid h3 {
