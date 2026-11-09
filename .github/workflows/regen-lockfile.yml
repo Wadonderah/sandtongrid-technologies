@@ -1,0 +1,52 @@
+name: Regenerate Lock File
+
+# Run manually or automatically when package.json changes on main.
+# Generates a fresh package-lock.json on Linux (ubuntu-latest) and
+# commits it back to the branch. Once the lock is healthy, the main
+# pipeline can be switched back to 'npm ci'.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/website/package.json
+
+permissions:
+  contents: write
+
+jobs:
+  regen:
+    name: Regenerate apps/website/package-lock.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Use a token so the commit can trigger downstream workflows
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Remove stale lock file
+        working-directory: apps/website
+        run: rm -f package-lock.json
+
+      - name: Generate fresh lock file
+        working-directory: apps/website
+        run: npm install --package-lock-only --include=optional
+
+      - name: Commit lock file
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps/website/package-lock.json
+          if git diff --cached --quiet; then
+            echo "Lock file unchanged — nothing to commit."
+          else
+            git commit -m "chore: regenerate apps/website/package-lock.json on Linux"
+            git push
+          fi

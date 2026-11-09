@@ -115,12 +115,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-          cache-dependency-path: apps/website/package-lock.json
 
       - name: Install Dependencies
         working-directory: apps/website
-        run: npm ci
+        run: npm install --include=optional
 
       - name: Lint
         working-directory: apps/website
@@ -314,12 +312,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-          cache-dependency-path: apps/website/package-lock.json
 
       - name: Install Dependencies
         working-directory: apps/website
-        run: npm ci
+        run: npm install --include=optional
 
       - name: Build Website
         working-directory: apps/website
