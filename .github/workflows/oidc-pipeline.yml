@@ -240,7 +240,7 @@ jobs:
         working-directory: apps/website
         run: |
           rm -rf node_modules package-lock.json
-          npm install
+          npm install --include=optional --os=linux --cpu=x64 --libc=glibc
           npm run build
 
       - name: Configure AWS Credentials via OIDC
@@ -306,7 +306,7 @@ jobs:
         working-directory: apps/website
         run: |
           rm -rf node_modules package-lock.json
-          npm install
+          npm install --include=optional --os=linux --cpu=x64 --libc=glibc
           npm run lint
 
       - name: Build Website
