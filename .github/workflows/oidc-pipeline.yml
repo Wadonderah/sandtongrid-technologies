@@ -236,12 +236,13 @@ jobs:
         with:
           node-version: 24
 
+      - name: Install Dependencies
+        working-directory: apps/website
+        run: npm ci
+
       - name: Build Website
         working-directory: apps/website
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install --include=optional --os=linux --cpu=x64 --libc=glibc
-          npm run build
+        run: npm run build
 
       - name: Configure AWS Credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
@@ -302,19 +303,17 @@ jobs:
         with:
           node-version: 24
 
+      - name: Install Dependencies
+        working-directory: apps/website
+        run: npm ci
+
       - name: Lint Website
         working-directory: apps/website
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install --include=optional --os=linux --cpu=x64 --libc=glibc
-          npm run lint
+        run: npm run lint
 
       - name: Build Website
         working-directory: apps/website
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install --include=optional --os=linux --cpu=x64 --libc=glibc
-          npm run build
+        run: npm run build
 
       - name: Cleanup Container
         if: always()
