@@ -311,7 +311,10 @@ jobs:
 
       - name: Build Website
         working-directory: apps/website
-        run: npm run build
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --include=optional --os=linux --cpu=x64 --libc=glibc
+          npm run build
 
       - name: Cleanup Container
         if: always()
