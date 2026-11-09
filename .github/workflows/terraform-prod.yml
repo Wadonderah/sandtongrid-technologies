@@ -205,7 +205,11 @@ jobs:
       - name: Build Website
         working-directory: apps/website
         run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          # Delete the Windows-generated lockfile and reinstall fresh on Linux so
+          # platform-specific optional dependencies (rolldown native bindings) are
+          # resolved correctly for the runner's OS/CPU.
+          rm -f package-lock.json
+          npm install
           npm run build
 
       - name: Configure AWS Credentials
