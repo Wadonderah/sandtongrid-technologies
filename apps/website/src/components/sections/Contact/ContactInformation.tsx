@@ -64,10 +64,7 @@ const ContactInformation: FC<ContactInformationProps> = ({
             <h3 className={styles.title}>Email</h3>
 
             <p className={styles.value}>
-              <a
-                href={`mailto:${information.email}`}
-                className={styles.link}
-              >
+              <a href={`mailto:${information.email}`} className={styles.link}>
                 {information.email}
               </a>
             </p>
