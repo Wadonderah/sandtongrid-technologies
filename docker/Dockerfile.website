@@ -1,21 +1,9 @@
 ###############################################################################
-# Stage 1 - Build
-###############################################################################
-
-FROM node:24-alpine AS builder
-
-WORKDIR /app
-
-COPY apps/website/package*.json ./
-
-RUN npm install --include=optional
-
-COPY apps/website .
-
-RUN npm run build
-
-###############################################################################
-# Stage 2 - Production
+# Production image — Nginx only, no Node.js
+#
+# The site is built in CI (npm install + npm run build).
+# This Dockerfile just packages the pre-built dist/ into an Nginx image.
+# No Node.js, no npm, no native binary headaches.
 ###############################################################################
 
 FROM nginx:1.28-alpine
@@ -29,7 +17,8 @@ RUN rm -rf /usr/share/nginx/html/*
 
 COPY docker/nginx/website.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+# dist/ is built by CI and passed as build context
+COPY apps/website/dist /usr/share/nginx/html
 
 EXPOSE 80
 
@@ -37,8 +26,8 @@ HEALTHCHECK --interval=30s \
             --timeout=5s \
             --start-period=10s \
             --retries=3 \
-CMD wget --quiet --tries=1 --spider http://127.0.0.1 || exit 1
+  CMD wget --quiet --tries=1 --spider http://127.0.0.1 || exit 1
 
 STOPSIGNAL SIGQUIT
 
-CMD ["nginx","-g","daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]

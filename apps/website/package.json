@@ -17,10 +17,6 @@
     "react-router-dom": "^7.18.1",
     "sitemap": "^9.0.1"
   },
-  "optionalDependencies": {
-    "@rolldown/binding-linux-x64-gnu": "1.1.5",
-    "@rolldown/binding-linux-x64-musl": "1.1.5"
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^24.13.3",
