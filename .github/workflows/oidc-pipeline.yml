@@ -56,16 +56,22 @@ jobs:
             files="$(git ls-tree -r --name-only "$PUSH_SHA")"
           fi
 
-          grep -Eq '^(infrastructure/|\.github/workflows/)' <(printf '%s\n' "$files") \
-            && echo "infra=true" || echo "infra=false"   >> "$GITHUB_OUTPUT"
-          grep -Eq '^(apps/website/|docker/|\.github/workflows/)' <(printf '%s\n' "$files") \
-            && echo "website=true" || echo "website=false" >> "$GITHUB_OUTPUT"
+          if printf '%s\n' "$files" | grep -Eq '^(infrastructure/|\.github/workflows/)'; then
+            echo "infra=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "infra=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          if printf '%s\n' "$files" | grep -Eq '^(apps/website/|docker/|\.github/workflows/)'; then
+            echo "website=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "website=false" >> "$GITHUB_OUTPUT"
+          fi
 
   # ---------------------------------------------------------------------------
   # Build Website
-  # Runs on ubuntu-latest (glibc) — the right platform for npm to resolve
-  # all native optional dependencies (rolldown, lightningcss, oxc-resolver).
-  # Uploads dist/ as an artifact for downstream jobs to consume.
+  # Runs on ubuntu-latest (glibc) so npm resolves native bindings correctly.
+  # Uploads dist/ as an artifact consumed by all downstream jobs.
   # ---------------------------------------------------------------------------
   build-website:
     name: Build Website
@@ -100,8 +106,8 @@ jobs:
 
   # ---------------------------------------------------------------------------
   # Docker CI
-  # Downloads the pre-built dist/ and packages it into the Nginx image.
-  # No Node.js inside the image — zero native-binary issues.
+  # Downloads pre-built dist/ and packages it into the Nginx image.
+  # No Node.js inside Docker — zero native-binary issues.
   # ---------------------------------------------------------------------------
   docker-ci:
     name: Docker CI
@@ -143,7 +149,7 @@ jobs:
           docker rm   website || true
 
   # ---------------------------------------------------------------------------
-  # Terraform Checks  (PR only)
+  # Terraform Checks  (PR only, when infra changes)
   # ---------------------------------------------------------------------------
   terraform-checks:
     name: Terraform Checks
@@ -180,7 +186,7 @@ jobs:
         run: terraform validate
 
   # ---------------------------------------------------------------------------
-  # Terraform Plan  (main push only)
+  # Terraform Plan  (main push only, when infra changes)
   # ---------------------------------------------------------------------------
   terraform-plan:
     name: Terraform Plan
@@ -252,7 +258,7 @@ jobs:
           retention-days: 1
 
   # ---------------------------------------------------------------------------
-  # Terraform Apply  (main push only, after plan)
+  # Terraform Apply  (main push only, after plan, when infra changes)
   # ---------------------------------------------------------------------------
   terraform-apply:
     name: Terraform Apply
@@ -290,13 +296,16 @@ jobs:
         run: terraform apply -input=false tfplan
 
   # ---------------------------------------------------------------------------
-  # Deploy Website  (main push only, after apply)
-  # Reuses the dist/ artifact — no second npm install needed.
+  # Deploy Website  (main push only, after build passes)
+  #
+  # Runs whenever website files change on main — does NOT require infra to
+  # have changed. Reads existing Terraform outputs directly.
+  # Reuses the dist/ artifact — no second npm install.
   # ---------------------------------------------------------------------------
   deploy-website:
     name: Deploy Website
     runs-on: ubuntu-latest
-    needs: [build-website, terraform-apply]
+    needs: [build-website, docker-ci]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment: production
     permissions:
