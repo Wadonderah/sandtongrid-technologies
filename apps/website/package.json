@@ -17,6 +17,11 @@
     "react-router-dom": "^7.18.1",
     "sitemap": "^9.0.1"
   },
+  "optionalDependencies": {
+    "@rolldown/binding-linux-x64-gnu": "1.1.5",
+    "@oxc-resolver/binding-linux-x64-gnu": "11.24.2",
+    "lightningcss-linux-x64-gnu": "1.33.0"
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^24.13.3",
