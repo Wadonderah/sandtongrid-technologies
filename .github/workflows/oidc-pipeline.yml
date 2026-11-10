@@ -62,7 +62,7 @@ jobs:
             echo "infra=false" >> "$GITHUB_OUTPUT"
           fi
 
-          if printf '%s\n' "$files" | grep -Eq '^(apps/website/|docker/|\.github/workflows/)'; then
+          if printf '%s\n' "$files" | grep -Eq '^(apps/website/|docker/|\.github/workflows/|\.dockerignore)'; then
             echo "website=true" >> "$GITHUB_OUTPUT"
           else
             echo "website=false" >> "$GITHUB_OUTPUT"
